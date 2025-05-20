@@ -1,0 +1,701 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTEVTHub Question PDF Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --primary-dark: #388E3C;
+            --secondary: #2196F3;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #757575;
+            --text: #212121;
+            --correct-bg: #d4edda;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: #f9f9f9;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .header-section {
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .header-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--dark-gray);
+        }
+        
+        input[type="text"], 
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+        
+        input[type="text"]:focus, 
+        input[type="date"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+        
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--medium-gray);
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary);
+        }
+        
+        .upload-area.highlight {
+            border-color: var(--primary);
+            background-color: rgba(76, 175, 80, 0.05);
+        }
+        
+        .upload-area p {
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .file-label {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .file-label:hover {
+            background: var(--primary-dark);
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 25px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .toggle-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .toggle-label {
+            font-weight: 500;
+            color: var(--dark-gray);
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-family: inherit;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #1976D2;
+        }
+        
+        .preview-area {
+            border: 1px solid var(--medium-gray);
+            padding: 25px;
+            min-height: 500px;
+            border-radius: 8px;
+            background: white;
+            overflow-y: auto;
+            max-height: 600px;
+        }
+        
+        .preview-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .preview-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+        
+        .preview-subtitle {
+            font-size: 18px;
+            color: var(--dark-gray);
+            margin-bottom: 10px;
+        }
+        
+        .preview-meta {
+            font-size: 14px;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--medium-gray);
+        }
+        
+        .question:last-child {
+            border-bottom: none;
+        }
+        
+        .question-text {
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .options {
+            margin-left: 20px;
+        }
+        
+        .option {
+            margin-bottom: 8px;
+        }
+        
+        .correct {
+            background-color: var(--correct-bg);
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .preview-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--medium-gray);
+            font-size: 12px;
+            color: var(--dark-gray);
+        }
+        
+        .branding-section {
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .branding-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CTEVTHub Question PDF Generator</h1>
+        
+        <div class="branding-section">
+            <div class="branding-title">PDF Branding</div>
+            <div class="header-form">
+                <div class="form-group">
+                    <label for="pdfTitle">PDF Title</label>
+                    <input type="text" id="pdfTitle" value="NURSING License Exam Preparation">
+                </div>
+                <div class="form-group">
+                    <label for="preparedBy">Prepared By</label>
+                    <input type="text" id="preparedBy" value="CTEVTHub & ctevtnote.com">
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-section">
+            <div class="header-form">
+                <div class="form-group">
+                    <label for="examTitle">Exam Title</label>
+                    <input type="text" id="examTitle" value="CTEVTHUB License Preparation Questions">
+                </div>
+                <div class="form-group">
+                    <label for="examSubtitle">Subtitle</label>
+                    <input type="text" id="examSubtitle" value="Health Assistant License Exam Preparation">
+                </div>
+                <div class="form-group">
+                    <label for="examDate">Date</label>
+                    <input type="date" id="examDate">
+                </div>
+                <div class="form-group">
+                    <label for="examDetails">Exam Details</label>
+                    <input type="text" id="examDetails" value="Total Questions: 100 | Marks per Question: 1 | Negative Marks: 0.2">
+                </div>
+                <div class="form-group">
+                    <label for="footerText">Footer Text</label>
+                    <input type="text" id="footerText" value="Prepared for Exam Success | Visit ctevtnote.com or CTEVTHub apps">
+                </div>
+                <div class="form-group">
+                    <label for="instructions">Instructions</label>
+                    <textarea id="instructions">Answer key is highlighted in green.</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="upload-area" id="dropZone">
+            <p>Drag & drop your JSON question file here or</p>
+            <label for="fileInput" class="file-label">Choose File</label>
+            <input type="file" id="fileInput" class="file-input" accept=".json">
+        </div>
+
+        <div class="controls">
+            <div class="toggle-group">
+                <input type="checkbox" id="showAnswers" checked>
+                <label for="showAnswers" class="toggle-label">Show answers</label>
+            </div>
+            <div>
+                <button id="previewPdf" class="btn btn-secondary">Preview PDF</button>
+                <button id="generatePdf" class="btn">Generate PDF</button>
+            </div>
+        </div>
+
+        <div class="preview-area" id="preview">
+            <div class="preview-header">
+                <div class="preview-title" id="previewPdfTitle">NURSING License Exam Preparation</div>
+                <div class="preview-subtitle" id="previewPreparedBy">Prepared By: CTEVTHub & ctevtnote.com</div>
+            </div>
+            <p style="text-align: center;">Upload a JSON file to preview questions</p>
+        </div>
+    </div>
+
+    <script>
+        const { jsPDF } = window.jspdf;
+        let questionsData = null;
+
+        // Placeholder for logo base64 (replace with actual base64 string)
+        const logoBase64 = 'logo_black.png'; // Replace with actual base64 string of CTEVTHub-Logo.png
+
+        // Set today's date as default
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const formattedDate = today.toISOString().split('T')[0];
+            document.getElementById('examDate').value = formattedDate;
+            
+            // Update preview titles
+            updatePreviewTitles();
+        });
+
+        // Update preview titles when inputs change
+        document.getElementById('pdfTitle').addEventListener('input', updatePreviewTitles);
+        document.getElementById('preparedBy').addEventListener('input', updatePreviewTitles);
+
+        function updatePreviewTitles() {
+            document.getElementById('previewPdfTitle').textContent = document.getElementById('pdfTitle').value;
+            document.getElementById('previewPreparedBy').textContent = "Prepared By: " + document.getElementById('preparedBy').value;
+        }
+
+        // Handle file upload
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                handleFileUpload(file);
+            }
+        });
+
+        // Drag and drop handling
+        const dropZone = document.getElementById('dropZone');
+        
+        ['dragover', 'dragenter'].forEach(eventName => {
+            dropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropZone.classList.add('highlight');
+            });
+        });
+
+        ['dragleave', 'dragend'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => {
+                dropZone.classList.remove('highlight');
+            });
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('highlight');
+            const file = e.dataTransfer.files[0];
+            if (file && file.name.endsWith('.json')) {
+                handleFileUpload(file);
+            } else {
+                alert('Please upload a JSON file');
+            }
+        });
+
+        function handleFileUpload(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    questionsData = JSON.parse(e.target.result);
+                    renderPreview();
+                } catch (error) {
+                    alert('Error parsing JSON file: ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // Format date for display
+        function formatDisplayDate(dateString) {
+            if (!dateString) return '';
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString(undefined, options);
+        }
+
+        // Render preview of questions
+        function renderPreview() {
+            const preview = document.getElementById('preview');
+            const showAnswers = document.getElementById('showAnswers').checked;
+            
+            if (!questionsData || !questionsData.questions) {
+                preview.innerHTML = '<p>Invalid question data format</p>';
+                return;
+            }
+
+            let html = `
+                <div class="preview-header">
+                    <div class="preview-title">${document.getElementById('pdfTitle').value}</div>
+                    <div class="preview-subtitle">Prepared By: ${document.getElementById('preparedBy').value}</div>
+                    <div class="preview-meta">
+                        <strong>${document.getElementById('examTitle').value}</strong><br>
+                        ${document.getElementById('examSubtitle').value}<br>
+                        <strong>Date:</strong> ${formatDisplayDate(document.getElementById('examDate').value)}<br>
+                        ${document.getElementById('examDetails').value}
+                    </div>
+                    <p><em>${document.getElementById('instructions').value}</em></p>
+                </div>
+                <hr>
+            `;
+
+            questionsData.questions.forEach((q, index) => {
+                html += `
+                    <div class="question">
+                        <div class="question-text"><strong>${index + 1}. ${q.title_name}</strong></div>
+                        <div class="options">
+                `;
+                
+                for (const [key, value] of Object.entries(q.options)) {
+                    const isCorrect = key === q.correctAnswer;
+                    const answerClass = showAnswers && isCorrect ? 'correct' : '';
+                    html += `
+                        <div class="option">
+                            <span class="${answerClass}"><strong>${key}:</strong> ${value}</span>
+                        </div>
+                    `;
+                }
+                
+                html += `</div></div>`;
+            });
+
+            html += `
+                <div class="preview-footer">
+                    ${document.getElementById('footerText').value}<br>
+                    © CTEVTHub & ctevtnote.com
+                </div>
+            `;
+            
+            preview.innerHTML = html;
+        }
+
+        // Generate PDF
+        function generatePDF(preview = false) {
+            if (!questionsData) {
+                alert('Please upload a JSON file first');
+                return;
+            }
+
+            const showAnswers = document.getElementById('showAnswers').checked;
+            const doc = new jsPDF({
+                orientation: 'portrait',
+                unit: 'mm',
+                format: 'a4'
+            });
+
+            // Define colors to match CSS
+            const primaryDark = [56, 142, 60]; // --primary-dark: #388E3C
+            const textColor = [33, 33, 33]; // --text: #212121
+            const darkGray = [117, 117, 117]; // --dark-gray: #757575
+            const correctBg = [212, 237, 218]; // --correct-bg: #d4edda
+            const mediumGray = [224, 224, 224]; // --medium-gray: #e0e0e0
+
+            // Set font to Helvetica (closest to Poppins)
+            doc.setFont('Helvetica');
+
+            // Function to add background image with 20% opacity
+            function addBackgroundImage() {
+                try {
+                    const pageWidth = doc.internal.pageSize.getWidth();
+                    const pageHeight = doc.internal.pageSize.getHeight();
+                    const maxWidth = 180; // Max width to fit A4 with margins
+                    const aspectRatio = 1; // 1600x1600 logo has 1:1 aspect ratio
+                    const imgWidth = maxWidth;
+                    const imgHeight = imgWidth / aspectRatio; // Maintain aspect ratio
+                    const x = (pageWidth - imgWidth) / 2; // Center horizontally
+                    const y = (pageHeight - imgHeight) / 2; // Center vertically
+
+                    doc.setGState(new doc.GState({ opacity: 0.07 }));
+                    doc.addImage(logoBase64, 'PNG', x, y, imgWidth, imgHeight);
+                    doc.setGState(new doc.GState({ opacity: 2 }));
+                } catch (e) {
+                    console.warn('Failed to add background image:', e);
+                }
+            }
+
+            // Cover page
+            addBackgroundImage(); // Use background image as logo
+
+            doc.setFontSize(24);
+            doc.setFont('Helvetica', 'bold');
+            doc.setTextColor(...primaryDark);
+            doc.text(document.getElementById('pdfTitle').value, 105, 60, { align: 'center' });
+
+            doc.setFontSize(18);
+            doc.setFont('Helvetica', 'normal');
+            doc.setTextColor(...darkGray);
+            doc.text('Prepared By: ' + document.getElementById('preparedBy').value, 105, 70, { align: 'center' });
+
+            doc.setFontSize(14);
+            doc.text(formatDisplayDate(document.getElementById('examDate').value), 105, 80, { align: 'center' });
+
+            // Additional cover page text
+            doc.setFontSize(12);
+            doc.setFont('Helvetica', 'italic');
+            doc.setTextColor(...primaryDark);
+            doc.text('Download CTEVTHub apps on Playstore', 105, 100, { align: 'center' });
+            doc.text('Visit ctevtnote.com', 105, 108, { align: 'center' });
+
+            // Cover page copyright footer
+            doc.setFontSize(8);
+            doc.setFont('Helvetica', 'normal');
+            doc.setTextColor(...darkGray);
+            doc.text('© CTEVTHub & ctevtnote.com', 105, 280, { align: 'center' });
+
+            // Add new page for questions
+            doc.addPage();
+
+            // Add background to question pages
+            addBackgroundImage();
+
+            // Header section
+            doc.setFontSize(16);
+            doc.setFont('Helvetica', 'bold');
+            doc.setTextColor(...primaryDark);
+            doc.text(document.getElementById('examTitle').value, 105, 20, { align: 'center' });
+
+            doc.setFontSize(14);
+            doc.setFont('Helvetica', 'normal');
+            doc.setTextColor(...darkGray);
+            doc.text(document.getElementById('examSubtitle').value, 105, 28, { align: 'center' });
+
+            doc.setFontSize(12);
+            doc.text(`Date: ${formatDisplayDate(document.getElementById('examDate').value)}`, 105, 36, { align: 'center' });
+            doc.text(document.getElementById('examDetails').value, 105, 42, { align: 'center' });
+
+            doc.setFontSize(10);
+            doc.setFont('Helvetica', 'italic');
+            doc.text(document.getElementById('instructions').value, 105, 50, { align: 'center' });
+
+            // Draw header border
+            doc.setDrawColor(...mediumGray);
+            doc.setLineWidth(0.3);
+            doc.line(15, 55, 195, 55);
+
+            // Add questions
+            let y = 65;
+            questionsData.questions.forEach((q, index) => {
+                if (y > 260) {
+                    doc.addPage();
+                    addBackgroundImage();
+                    y = 20;
+                    // Add copyright footer on new pages
+                    doc.setFontSize(8);
+                    doc.setFont('Helvetica', 'normal');
+                    doc.setTextColor(...darkGray);
+                    doc.text('© CTEVTHub & ctevtnote.com', 105, 280, { align: 'center' });
+                }
+
+                // Question text
+                doc.setFontSize(12);
+                doc.setFont('Helvetica', 'bold');
+                doc.setTextColor(...textColor);
+                const questionLines = doc.splitTextToSize(`${index + 1}. ${q.title_name}`, 180);
+                doc.text(questionLines, 15, y);
+                y += questionLines.length * 5 + 2;
+
+                // Options
+                doc.setFontSize(10);
+                doc.setFont('Helvetica', 'normal');
+                for (const [key, value] of Object.entries(q.options)) {
+                    const isCorrect = key === q.correctAnswer;
+                    const optionText = `${key}: ${value}`;
+                    const optionLines = doc.splitTextToSize(optionText, 175);
+
+                    if (showAnswers && isCorrect) {
+                        const textWidth = doc.getTextWidth(optionText);
+                        const textHeight = optionLines.length * 4;
+                        doc.setFillColor(...correctBg);
+                        doc.rect(18, y - 3, textWidth + 4, textHeight + 2, 'F');
+                    }
+
+                    doc.setTextColor(...textColor);
+                    doc.text(optionLines, 20, y);
+                    y += optionLines.length * 4 + 2;
+                }
+
+                // Draw dashed border
+                doc.setDrawColor(...mediumGray);
+                doc.setLineWidth(0.2);
+                doc.setLineDash([1, 1], 0);
+                doc.line(15, y, 195, y);
+                doc.setLineDash();
+                y += 5;
+            });
+
+            // Footer
+            doc.setFontSize(8);
+            doc.setFont('Helvetica', 'normal');
+            doc.setTextColor(...darkGray);
+            doc.text(document.getElementById('footerText').value, 105, 275, { align: 'center' });
+            doc.text('© CTEVTHub & ctevtnote.com', 105, 280, { align: 'center' });
+
+            // Draw footer border
+            doc.setDrawColor(...mediumGray);
+            doc.setLineWidth(0.3);
+            doc.line(15, 270, 195, 270);
+
+            if (preview) {
+                const pdfData = doc.output('datauristring');
+                window.open(pdfData);
+            } else {
+                doc.save(`${document.getElementById('pdfTitle').value.replace(/ /g, '_')}.pdf`);
+            }
+        }
+
+        // Button event listeners
+        document.getElementById('generatePdf').addEventListener('click', function() {
+            generatePDF(false);
+        });
+        
+        document.getElementById('previewPdf').addEventListener('click', function() {
+            generatePDF(true);
+        });
+
+        // Update preview when checkbox changes
+        document.getElementById('showAnswers').addEventListener('change', renderPreview);
+        
+        // Update preview when any header field changes
+        const headerFields = ['examTitle', 'examSubtitle', 'examDate', 'examDetails', 'instructions', 'footerText'];
+        headerFields.forEach(field => {
+            document.getElementById(field).addEventListener('input', renderPreview);
+        });
+    </script>
+</body>
+</html>
