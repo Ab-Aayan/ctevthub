@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPTCHA Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+        }
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            resize: vertical;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        .captcha-image {
+            width: 100%;
+            max-width: 400px;
+            margin: 1rem 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: none;
+        }
+        .uuid-container {
+            display: none;
+            margin: 1rem 0;
+            padding: 0.75rem;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            word-break: break-all;
+        }
+        .uuid-container p {
+            margin: 0 0 0.5rem;
+            color: #333;
+        }
+        .error-message {
+            display: none;
+            color: red;
+            background-color: #ffe6e6;
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        .success-message {
+            display: none;
+            color: green;
+            background-color: #e6ffe6;
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        .copy-button {
+            background-color: #28a745;
+            width: auto;
+            padding: 0.5rem 1rem;
+            margin-top: 0.5rem;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .copy-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>CAPTCHA Display</h2>
+        <p>Paste the JSON response to display the CAPTCHA image and UUID.</p>
+        <div id="error-message" class="error-message"></div>
+        <div id="success-message" class="success-message"></div>
+        <div class="form-group">
+            <label for="json-input">JSON Input</label>
+            <textarea id="json-input" name="json-input" placeholder='Paste JSON here, e.g., {"className":"APIResponse","data":{"uuid":"...","image":"..."}}' required></textarea>
+        </div>
+        <img id="captcha-image" class="captcha-image" alt="CAPTCHA Image">
+        <div id="uuid-container" class="uuid-container">
+            <p><strong>UUID:</strong> <span id="uuid-text"></span></p>
+            <button id="copy-uuid" class="copy-button">Copy UUID</button>
+        </div>
+    </div>
+
+    <script>
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            document.getElementById('success-message').style.display = 'none';
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('success-message');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            document.getElementById('error-message').style.display = 'none';
+        }
+
+        function clearDisplay() {
+            document.getElementById('captcha-image').style.display = 'none';
+            document.getElementById('uuid-container').style.display = 'none';
+            document.getElementById('error-message').style.display = 'none';
+            document.getElementById('success-message').style.display = 'none';
+        }
+
+        function processJson(jsonInput) {
+            clearDisplay();
+            if (!jsonInput.trim()) return;
+
+            try {
+                const parsedJson = JSON.parse(jsonInput);
+                if (!parsedJson.data || !parsedJson.data.uuid || !parsedJson.data.image) {
+                    throw new Error('Invalid JSON structure. Expected "data" with "uuid" and "image" fields.');
+                }
+
+                const { uuid, image } = parsedJson.data;
+                const captchaImage = document.getElementById('captcha-image');
+                captchaImage.src = `data:image/gif;base64,${image}`;
+                captchaImage.style.display = 'block';
+
+                document.getElementById('uuid-text').textContent = uuid;
+                document.getElementById('uuid-container').style.display = 'block';
+
+                showSuccess('CAPTCHA image and UUID loaded successfully!');
+            } catch (error) {
+                showError(`Error: ${error.message}`);
+            }
+        }
+
+        document.getElementById('json-input').addEventListener('input', (e) => {
+            processJson(e.target.value);
+        });
+
+        document.getElementById('copy-uuid').addEventListener('click', () => {
+            const uuidText = document.getElementById('uuid-text').textContent;
+            navigator.clipboard.writeText(uuidText).then(() => {
+                showSuccess('UUID copied to clipboard!');
+            }).catch(() => {
+                showError('Failed to copy UUID.');
+            });
+        });
+    </script>
+</body>
+</html>

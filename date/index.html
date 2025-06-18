@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Appointments Filter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+        }
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            resize: vertical;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        .current-time {
+            background-color: #e3f2fd;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            text-align: center;
+            border: 1px solid #2196f3;
+        }
+        .results-container {
+            display: none;
+            margin-top: 2rem;
+            text-align: left;
+        }
+        .appointment-card {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .appointment-card.priority {
+            border: 2px solid #28a745;
+            background-color: #f0fff4;
+        }
+        .appointment-header {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .appointment-header.priority {
+            color: #28a745;
+        }
+        .appointment-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        .appointment-date {
+            color: #495057;
+            font-weight: 500;
+        }
+        .booking-info {
+            color: #007bff;
+        }
+        .slot-stats {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        .timeslot {
+            background-color: white;
+            border: 1px solid #28a745;
+            border-radius: 5px;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .timeslot-info {
+            flex-grow: 1;
+        }
+        .timeslot-time {
+            font-weight: bold;
+            color: #28a745;
+        }
+        .timeslot-uid {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+            word-break: break-all;
+        }
+        .timeslot-date {
+            font-size: 0.9rem;
+            color: #495057;
+            margin-top: 0.25rem;
+            font-weight: 500;
+        }
+        .copy-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 1rem;
+        }
+        .copy-button:hover {
+            background-color: #218838;
+        }
+        .error-message {
+            display: none;
+            color: red;
+            background-color: #ffe6e6;
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        .success-message {
+            display: none;
+            color: green;
+            background-color: #e6ffe6;
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        .no-results {
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+            padding: 2rem;
+        }
+        .stats {
+            background-color: #e9ecef;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .booking-closed {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Available Appointments Filter</h2>
+        <p>Shows all appointments open for booking today based on booking_start_date and booking_start_time.</p>
+        
+        <div class="current-time">
+            <strong>Current Time:</strong> <span id="current-time"></span>
+        </div>
+        
+        <div id="error-message" class="error-message"></div>
+        <div id="success-message" class="success-message"></div>
+        
+        <div class="form-group">
+            <label for="json-input">Appointment JSON Data</label>
+            <textarea id="json-input" name="json-input" placeholder='Paste appointment JSON array here...' required></textarea>
+        </div>
+        
+        <div id="results-container" class="results-container">
+            <div id="stats" class="stats"></div>
+            <div id="appointments-list"></div>
+        </div>
+    </div>
+
+    <script>
+        function updateCurrentTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = now.toLocaleString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            document.getElementById('success-message').style.display = 'none';
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('success-message');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            document.getElementById('error-message').style.display = 'none';
+        }
+
+        function clearDisplay() {
+            document.getElementById('results-container').style.display = 'none';
+            document.getElementById('error-message').style.display = 'none';
+            document.getElementById('success-message').style.display = 'none';
+        }
+
+        function formatTime(timeString) {
+            return new Date(`2000-01-01T${timeString}`).toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true
+            });
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return {
+                full: date.toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }),
+                short: date.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric'
+                })
+            };
+        }
+
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.style.backgroundColor = '#218838';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.backgroundColor = '#28a745';
+                }, 2000);
+            }).catch(() => {
+                showError('Failed to copy UID to clipboard.');
+            });
+        }
+
+        function isBookingOpen(appointment) {
+            const now = new Date();
+            const today = now.toISOString().split('T')[0];
+            const currentTime = now.toTimeString().split(' ')[0];
+            
+            // Check if booking is open and today matches booking_start_date
+            if (!appointment.booking_open || appointment.booking_start_date !== today) {
+                return false;
+            }
+            
+            // Check if current time is past booking_start_time
+            return currentTime >= appointment.booking_start_time;
+        }
+
+        function filterAppointments(appointmentsData) {
+            clearDisplay();
+            
+            if (!appointmentsData || !Array.isArray(appointmentsData)) {
+                showError('Invalid data format. Expected an array of appointments.');
+                return;
+            }
+
+            // Filter appointments that are open for booking today
+            const openAppointments = appointmentsData.filter(appointment => {
+                return isBookingOpen(appointment);
+            });
+
+            if (openAppointments.length === 0) {
+                document.getElementById('results-container').style.display = 'block';
+                document.getElementById('appointments-list').innerHTML = '<div class="no-results">No appointments are open for booking at this time.</div>';
+                document.getElementById('stats').innerHTML = '<strong>No appointments available for booking today</strong>';
+                return;
+            }
+
+            // Sort appointments to prioritize "Educational Documents Verification for the Student"
+            openAppointments.sort((a, b) => {
+                const priorityType = "Educational Documents Verification for the Student";
+                if (a.type.name === priorityType && b.type.name !== priorityType) return -1;
+                if (b.type.name === priorityType && a.type.name !== priorityType) return 1;
+                return a.type.name.localeCompare(b.type.name);
+            });
+
+            let totalAvailableSlots = 0;
+            let totalSlots = 0;
+            let appointmentCount = 0;
+            const appointmentsList = document.getElementById('appointments-list');
+            appointmentsList.innerHTML = '';
+
+            openAppointments.forEach(appointment => {
+                const availableTimeslots = appointment.timeslots.filter(slot => !slot.booked);
+                totalSlots += appointment.total_timeslots || appointment.timeslots.length;
+                
+                appointmentCount++;
+                totalAvailableSlots += availableTimeslots.length;
+
+                const appointmentCard = document.createElement('div');
+                appointmentCard.className = 'appointment-card';
+                
+                const isPriority = appointment.type.name === "Educational Documents Verification for the Student";
+                if (isPriority) {
+                    appointmentCard.classList.add('priority');
+                }
+
+                const header = document.createElement('div');
+                header.className = 'appointment-header';
+                if (isPriority) {
+                    header.classList.add('priority');
+                }
+                header.textContent = appointment.type.name;
+
+                const metaDiv = document.createElement('div');
+                metaDiv.className = 'appointment-meta';
+
+                const appointmentDateDiv = document.createElement('div');
+                appointmentDateDiv.className = 'appointment-date';
+                const formattedAppointmentDate = formatDate(appointment.date);
+                appointmentDateDiv.innerHTML = `<strong>Appointment Date:</strong><br>${formattedAppointmentDate.full}`;
+
+                const bookingInfoDiv = document.createElement('div');
+                bookingInfoDiv.className = 'booking-info';
+                const formattedBookingDate = formatDate(appointment.booking_start_date);
+                bookingInfoDiv.innerHTML = `<strong>Booking Opened:</strong><br>${formattedBookingDate.short} at ${formatTime(appointment.booking_start_time)}`;
+
+                metaDiv.appendChild(appointmentDateDiv);
+                metaDiv.appendChild(bookingInfoDiv);
+
+                const slotStatsDiv = document.createElement('div');
+                slotStatsDiv.className = 'slot-stats';
+                const bookedSlots = appointment.timeslots.filter(slot => slot.booked).length;
+                slotStatsDiv.innerHTML = `
+                    <strong>Slot Statistics:</strong> 
+                    ${availableTimeslots.length} available / ${appointment.total_timeslots || appointment.timeslots.length} total slots
+                    ${appointment.all_timeslots_booked ? ' <span style="color: red;">(All Booked)</span>' : ''}
+                `;
+
+                appointmentCard.appendChild(header);
+                appointmentCard.appendChild(metaDiv);
+                appointmentCard.appendChild(slotStatsDiv);
+
+                if (availableTimeslots.length > 0) {
+                    availableTimeslots.forEach(slot => {
+                        const timeslotDiv = document.createElement('div');
+                        timeslotDiv.className = 'timeslot';
+
+                        const timeslotInfo = document.createElement('div');
+                        timeslotInfo.className = 'timeslot-info';
+
+                        const timeDiv = document.createElement('div');
+                        timeDiv.className = 'timeslot-time';
+                        timeDiv.textContent = `${formatTime(slot.time_start)} - ${formatTime(slot.time_end)}`;
+
+                        const dateDiv = document.createElement('div');
+                        dateDiv.className = 'timeslot-date';
+                        const slotFormattedDate = formatDate(slot.date);
+                        dateDiv.textContent = slotFormattedDate.full;
+
+                        const uidDiv = document.createElement('div');
+                        uidDiv.className = 'timeslot-uid';
+                        uidDiv.textContent = `UID: ${slot.uid}`;
+
+                        timeslotInfo.appendChild(timeDiv);
+                        timeslotInfo.appendChild(dateDiv);
+                        timeslotInfo.appendChild(uidDiv);
+
+                        const copyButton = document.createElement('button');
+                        copyButton.className = 'copy-button';
+                        copyButton.textContent = 'Copy UID';
+                        copyButton.onclick = () => copyToClipboard(slot.uid, copyButton);
+
+                        timeslotDiv.appendChild(timeslotInfo);
+                        timeslotDiv.appendChild(copyButton);
+                        appointmentCard.appendChild(timeslotDiv);
+                    });
+                } else {
+                    const noSlotsDiv = document.createElement('div');
+                    noSlotsDiv.className = 'no-results';
+                    noSlotsDiv.textContent = 'All timeslots are booked for this appointment.';
+                    appointmentCard.appendChild(noSlotsDiv);
+                }
+
+                appointmentsList.appendChild(appointmentCard);
+            });
+
+            const statsText = `
+                <strong>Booking Summary:</strong><br>
+                ${totalAvailableSlots} available slots / ${totalSlots} total slots across ${appointmentCount} appointment types<br>
+                <small>Showing appointments open for booking today</small>
+            `;
+            document.getElementById('stats').innerHTML = statsText;
+            
+            if (totalAvailableSlots > 0) {
+                showSuccess(`Found ${totalAvailableSlots} available timeslots open for booking!`);
+            } else {
+                showSuccess('All available appointment slots are currently booked.');
+            }
+
+            document.getElementById('results-container').style.display = 'block';
+        }
+
+        function processInput() {
+            const jsonInput = document.getElementById('json-input').value;
+
+            if (!jsonInput.trim()) {
+                clearDisplay();
+                return;
+            }
+
+            try {
+                const appointmentsData = JSON.parse(jsonInput);
+                filterAppointments(appointmentsData);
+            } catch (error) {
+                showError(`Error parsing JSON: ${error.message}`);
+            }
+        }
+
+        // Update time every second
+        setInterval(updateCurrentTime, 1000);
+        updateCurrentTime();
+
+        // Event listeners
+        document.getElementById('json-input').addEventListener('input', processInput);
+
+        // Process input on page load if there's already data
+        processInput();
+    </script>
+</body>
+</html>
