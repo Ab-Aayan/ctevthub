@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CTEVTHub Question PDF Generator</title>
+    <title>CTEVTHub Random Question Paper Generator</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -18,6 +18,7 @@
             --dark-gray: #757575;
             --text: #212121;
             --correct-bg: #d4edda;
+            --answer-table-bg: #f0f7ff;
         }
 
         * {
@@ -255,13 +256,6 @@
             margin-bottom: 8px;
         }
 
-        .correct {
-            background-color: var(--correct-bg);
-            padding: 5px 10px;
-            border-radius: 4px;
-            display: inline-block;
-        }
-
         .preview-footer {
             text-align: center;
             margin-top: 30px;
@@ -285,6 +279,47 @@
             color: var(--primary-dark);
         }
 
+        .answer-key-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background-color: var(--answer-table-bg);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .answer-key-table th,
+        .answer-key-table td {
+            border: 1px solid var(--medium-gray);
+            padding: 8px;
+            text-align: center;
+        }
+
+        .answer-key-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 500;
+        }
+
+        .answer-key-table tr:nth-child(even) {
+            background-color: rgba(76, 175, 80, 0.05);
+        }
+
+        .random-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .random-controls label {
+            margin-bottom: 0;
+        }
+
+        #questionCount {
+            width: 80px;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -298,31 +333,18 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+
+            .random-controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
 
 <body>
-
     <div class="container">
-        <h1>CTEVTHub Question PDF Generator</h1>
-        <div class="center" style="text-align: center;">
-            <a href="./question.html" style="
-            text-decoration: none;
-            display: inline-block;
-            padding: 12px 12px;
-            margin: 12px;
-            text-align: center;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: bold;
-        ">Create Question</a>
-        </div>
-
+        <h1>CTEVTHub Random Question Paper Generator</h1>
 
         <div class="branding-section">
             <div class="branding-title">PDF Branding</div>
@@ -355,10 +377,10 @@
                 <div class="form-group">
                     <label for="examDetails">Exam Details</label>
                     <input type="text" id="examDetails"
-                        value="Total Questions: 100 | Marks per Question: 1 | Negative Marks: No">
+                        value="Total Questions: 50 | Marks per Question: 1 | Negative Marks: No">
                 </div>
                 <div class="form-group">
-                    <label for="totalJsonQuestions">Total PDF Questions</label>
+                    <label for="totalJsonQuestions">Total Questions in JSON</label>
                     <input type="text" id="totalJsonQuestions" value="0" readonly>
                 </div>
                 <div class="form-group">
@@ -368,7 +390,7 @@
                 </div>
                 <div class="form-group">
                     <label for="instructions">Instructions</label>
-                    <textarea id="instructions">Answer key is highlighted in green.</textarea>
+                    <textarea id="instructions">Answer key is provided at the end of the paper.</textarea>
                 </div>
             </div>
         </div>
@@ -379,11 +401,13 @@
             <input type="file" id="fileInput" class="file-input" accept=".json">
         </div>
 
+        <div class="random-controls">
+            <label for="questionCount">Number of Questions:</label>
+            <input type="number" id="questionCount" min="1" max="100" value="50">
+            <button id="randomizeBtn" class="btn">Randomize Questions</button>
+        </div>
+
         <div class="controls">
-            <div class="toggle-group">
-                <input type="checkbox" id="showAnswers" checked>
-                <label for="showAnswers" class="toggle-label">Show answers</label>
-            </div>
             <div>
                 <button id="previewPdf" class="btn btn-secondary">Preview PDF</button>
                 <button id="generatePdf" class="btn">Generate PDF</button>
@@ -402,6 +426,8 @@
     <script>
         const { jsPDF } = window.jspdf;
         let questionsData = null;
+        let selectedQuestions = [];
+        let answerKey = [];
 
         // Placeholder for logo base64 (replace with actual base64 string)
         const logoBase64 = 'logo_black.png'; // Replace with actual base64 string of CTEVTHub-Logo.png
@@ -472,12 +498,47 @@
                     if (questionsData.levelName) {
                         document.getElementById('examSubtitle').value = questionsData.levelName;
                     }
-                    renderPreview();
+                    // Randomize questions
+                    randomizeQuestions();
                 } catch (error) {
                     alert('Error parsing JSON file: ' + error.message);
                 }
             };
             reader.readAsText(file);
+        }
+
+        // Randomize questions function
+        function randomizeQuestions() {
+            if (!questionsData || !questionsData.questions) return;
+
+            const questionCount = parseInt(document.getElementById('questionCount').value) || 50;
+            const allQuestions = [...questionsData.questions];
+
+            // Reset arrays
+            selectedQuestions = [];
+            answerKey = [];
+
+            // Shuffle all questions
+            for (let i = allQuestions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [allQuestions[i], allQuestions[j]] = [allQuestions[j], allQuestions[i]];
+            }
+
+            // Select the requested number of questions
+            selectedQuestions = allQuestions.slice(0, Math.min(questionCount, allQuestions.length));
+
+            // Update exam details with the actual number of questions
+            document.getElementById('examDetails').value = `Total Questions: ${selectedQuestions.length} | Marks per Question: 1 | Negative Marks: No`;
+
+            // Create answer key
+            selectedQuestions.forEach((q, index) => {
+                answerKey.push({
+                    questionNo: index + 1,
+                    answer: q.correctAnswer
+                });
+            });
+
+            renderPreview();
         }
 
         // Format date for display
@@ -490,10 +551,9 @@
         // Render preview of questions
         function renderPreview() {
             const preview = document.getElementById('preview');
-            const showAnswers = document.getElementById('showAnswers').checked;
 
-            if (!questionsData || !questionsData.questions) {
-                preview.innerHTML = '<p>Invalid question data format</p>';
+            if (selectedQuestions.length === 0) {
+                preview.innerHTML = '<p>No questions selected. Please upload a JSON file first.</p>';
                 return;
             }
 
@@ -506,14 +566,14 @@
                         ${document.getElementById('examSubtitle').value}<br>
                         <strong>Date:</strong> ${formatDisplayDate(document.getElementById('examDate').value)}<br>
                         ${document.getElementById('examDetails').value}<br>
-                        Total PDF Questions: ${document.getElementById('totalJsonQuestions').value}
+                        Total Questions: ${selectedQuestions.length}
                     </div>
                     <p><em>${document.getElementById('instructions').value}</em></p>
                 </div>
                 <hr>
             `;
 
-            questionsData.questions.forEach((q, index) => {
+            selectedQuestions.forEach((q, index) => {
                 html += `
                     <div class="question">
                         <div class="question-text"><strong>${index + 1}. ${q.title_name}</strong></div>
@@ -521,17 +581,57 @@
                 `;
 
                 for (const [key, value] of Object.entries(q.options)) {
-                    const isCorrect = key === q.correctAnswer;
-                    const answerClass = showAnswers && isCorrect ? 'correct' : '';
                     html += `
                         <div class="option">
-                            <span class="${answerClass}"><strong>${key}:</strong> ${value}</span>
+                            <span><strong>${key}:</strong> ${value}</span>
                         </div>
                     `;
                 }
 
                 html += `</div></div>`;
             });
+
+            // Add answer key table
+            html += `
+                <div style="margin-top: 40px;">
+                    <h3 style="text-align: center; color: var(--primary-dark); margin-bottom: 15px;">Answer Key</h3>
+                    <table class="answer-key-table">
+                        <thead>
+                            <tr>
+                                <th>Question No.</th>
+                                <th>Answer</th>
+                                <th>Question No.</th>
+                                <th>Answer</th>
+                                <th>Question No.</th>
+                                <th>Answer</th>
+                                <th>Question No.</th>
+                                <th>Answer</th>
+                                <th>Question No.</th>
+                                <th>Answer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            // Create rows with 5 columns each
+            for (let i = 0; i < Math.ceil(selectedQuestions.length / 5); i++) {
+                html += '<tr>';
+                for (let j = 0; j < 5; j++) {
+                    const index = i * 5 + j;
+                    if (index < selectedQuestions.length) {
+                        html += `<td>${index + 1}</td><td>${selectedQuestions[index].correctAnswer}</td>`;
+                    } else {
+                        html += '<td></td><td></td>';
+                    }
+                }
+                html += '</tr>';
+            }
+
+            html += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
 
             html += `
                 <div class="preview-footer">
@@ -545,12 +645,11 @@
 
         // Generate PDF
         function generatePDF(preview = false) {
-            if (!questionsData) {
+            if (selectedQuestions.length === 0) {
                 alert('Please upload a JSON file first');
                 return;
             }
 
-            const showAnswers = document.getElementById('showAnswers').checked;
             const doc = new jsPDF({
                 orientation: 'portrait',
                 unit: 'mm',
@@ -561,7 +660,6 @@
             const primaryDark = [56, 142, 60]; // --primary-dark: #388E3C
             const textColor = [33, 33, 33]; // --text: #212121
             const darkGray = [117, 117, 117]; // --dark-gray: #757575
-            const correctBg = [212, 237, 218]; // --correct-bg: #d4edda
             const mediumGray = [224, 224, 224]; // --medium-gray: #e0e0e0
 
             // Set font to Helvetica (closest to Poppins)
@@ -636,7 +734,7 @@
             doc.setFontSize(12);
             doc.text(`Date: ${formatDisplayDate(document.getElementById('examDate').value)}`, 105, 36, { align: 'center' });
             doc.text(document.getElementById('examDetails').value, 105, 42, { align: 'center' });
-            doc.text(`Total PDF Questions: ${document.getElementById('totalJsonQuestions').value}`, 105, 48, { align: 'center' });
+            doc.text(`Total Questions: ${selectedQuestions.length}`, 105, 48, { align: 'center' });
 
             doc.setFontSize(10);
             doc.setFont('Helvetica', 'italic');
@@ -649,7 +747,7 @@
 
             // Add questions
             let y = 71;
-            questionsData.questions.forEach((q, index) => {
+            selectedQuestions.forEach((q, index) => {
                 if (y > 260) {
                     doc.addPage();
                     addBackgroundImage();
@@ -673,16 +771,8 @@
                 doc.setFontSize(10);
                 doc.setFont('Helvetica', 'normal');
                 for (const [key, value] of Object.entries(q.options)) {
-                    const isCorrect = key === q.correctAnswer;
                     const optionText = `${key}: ${value}`;
                     const optionLines = doc.splitTextToSize(optionText, 175);
-
-                    if (showAnswers && isCorrect) {
-                        const textWidth = doc.getTextWidth(optionText);
-                        const textHeight = optionLines.length * 4;
-                        doc.setFillColor(...correctBg);
-                        doc.rect(18, y - 3, textWidth + 4, textHeight + 2, 'F');
-                    }
 
                     doc.setTextColor(...textColor);
                     doc.text(optionLines, 20, y);
@@ -698,17 +788,70 @@
                 y += 5;
             });
 
+            // Add answer key table
+            doc.addPage();
+            addBackgroundImage();
+
+            // Answer key header
+            doc.setFontSize(16);
+            doc.setFont('Helvetica', 'bold');
+            doc.setTextColor(...primaryDark);
+            doc.text('Answer Key', 105, 20, { align: 'center' });
+
+            // Draw header border
+            doc.setDrawColor(...mediumGray);
+            doc.setLineWidth(0.3);
+            doc.line(15, 25, 195, 25);
+
+            // Create answer key table data
+            const tableData = [];
+            for (let i = 0; i < selectedQuestions.length; i += 5) {
+                const row = [];
+                for (let j = 0; j < 5; j++) {
+                    const index = i + j;
+                    if (index < selectedQuestions.length) {
+                        row.push((index + 1).toString(), selectedQuestions[index].correctAnswer);
+                    } else {
+                        row.push('', '');
+                    }
+                }
+                tableData.push(row);
+            }
+
+            // Create answer key table
+            doc.autoTable({
+                startY: 30,
+                head: [['Q.No', 'Ans', 'Q.No', 'Ans', 'Q.No', 'Ans', 'Q.No', 'Ans', 'Q.No', 'Ans']],
+                body: tableData,
+                theme: 'grid',
+                headStyles: {
+                    fillColor: primaryDark,
+                    textColor: [255, 255, 255],
+                    fontStyle: 'bold'
+                },
+                alternateRowStyles: {
+                    fillColor: [240, 247, 255]
+                },
+                styles: {
+                    fontSize: 10,
+                    cellPadding: 3,
+                    textColor: textColor
+                },
+                margin: { left: 15, right: 15 }
+            });
+
             // Footer
+            const finalY = doc.lastAutoTable.finalY + 10;
             doc.setFontSize(8);
             doc.setFont('Helvetica', 'normal');
             doc.setTextColor(...darkGray);
-            doc.text(document.getElementById('footerText').value, 105, 275, { align: 'center' });
-            doc.text('© CTEVTHub & ctevtnote.com', 105, 280, { align: 'center' });
+            doc.text(document.getElementById('footerText').value, 105, finalY, { align: 'center' });
+            doc.text('© CTEVTHub & ctevtnote.com', 105, finalY + 5, { align: 'center' });
 
             // Draw footer border
             doc.setDrawColor(...mediumGray);
             doc.setLineWidth(0.3);
-            doc.line(15, 270, 195, 270);
+            doc.line(15, finalY - 5, 195, finalY - 5);
 
             // Dynamic file name based on examSubtitle
             let fileName = document.getElementById('examSubtitle').value;
@@ -735,13 +878,21 @@
             generatePDF(true);
         });
 
-        // Update preview when checkbox changes
-        document.getElementById('showAnswers').addEventListener('change', renderPreview);
+        document.getElementById('randomizeBtn').addEventListener('click', function () {
+            randomizeQuestions();
+        });
 
         // Update preview when any header field changes
         const headerFields = ['examTitle', 'examSubtitle', 'examDate', 'examDetails', 'instructions', 'footerText'];
         headerFields.forEach(field => {
             document.getElementById(field).addEventListener('input', renderPreview);
+        });
+
+        // Update when question count changes
+        document.getElementById('questionCount').addEventListener('change', function () {
+            if (questionsData) {
+                randomizeQuestions();
+            }
         });
     </script>
 </body>
