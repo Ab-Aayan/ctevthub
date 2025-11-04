@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>User Identity Hash Generator</title>
+    <style>
+        :root {
+            --bg: #f6f8fb;
+            --card: #fff;
+            --accent: #3498db;
+            --muted: #7f8c8d
+        }
+
+        body {
+            font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            background: #f4f7fb;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #1f2937
+        }
+
+        .card {
+            width: 100%;
+            max-width: 850px;
+            background: var(--card);
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08)
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 22px
+        }
+
+        textarea,
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            margin-top: 4px
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px
+        }
+
+        button {
+            cursor: pointer;
+            border: 0;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-weight: 600
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff
+        }
+
+        .btn-ghost {
+            background: #f1f3f5;
+            color: #111;
+            border: 1px solid #ddd
+        }
+
+        .section {
+            margin-top: 18px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 13px;
+            color: #555
+        }
+
+        pre {
+            background: #f9fafb;
+            border: 1px solid #eee;
+            padding: 10px;
+            border-radius: 8px;
+            overflow-x: auto
+        }
+
+        .copy-btn {
+            margin-top: 8px;
+            background: #00b86b;
+            color: #fff
+        }
+
+        .copy-btn:hover {
+            background: #009657
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>🔐 User Identity Hash Generator</h1>
+        <p style="color:#666;margin-bottom:10px;">Paste your JSON below or click <b>Fill Example</b>. You can also edit
+            the extracted fields before generating the hash.</p>
+
+        <textarea id="jsonInput" rows="8" placeholder='{
+  "applicant_id": 5256,
+  "timeslot_id": "4c7d...",
+  "email_verification_id": 9556,
+  "phone_verification_id": 9556,
+  "detail_verification_id": 9556,
+  "user_identity": ""
+}'></textarea>
+
+        <div class="row">
+            <button id="fillBtn" class="btn-ghost">📋 Fill Example</button>
+            <button id="parseBtn" class="btn-ghost">🔍 Parse Fields</button>
+            <button id="generateBtn" class="btn-primary">⚡ Generate Hash</button>
+        </div>
+
+        <div class="section">
+            <h3>Editable Extracted Fields</h3>
+            <div class="grid">
+                <div>
+                    <label>Applicant ID</label>
+                    <input id="applicant" placeholder="applicant_id">
+                </div>
+                <div>
+                    <label>Timeslot ID</label>
+                    <input id="timeslot" placeholder="timeslot_id">
+                </div>
+                <div>
+                    <label>Detail Verification ID</label>
+                    <input id="detail" placeholder="detail_verification_id">
+                </div>
+                <div>
+                    <label>Email Verification ID</label>
+                    <input id="email" placeholder="email_verification_id">
+                </div>
+                <div>
+                    <label>Phone Verification ID</label>
+                    <input id="phone" placeholder="phone_verification_id">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Result</h3>
+            <pre id="result">Waiting...</pre>
+            <button id="copyHashBtn" class="copy-btn">📋 Copy user_identity</button>
+
+            <h4 style="margin-top:16px;">Full JSON (with user_identity)</h4>
+            <pre id="fullJson">---</pre>
+            <button id="copyJsonBtn" class="copy-btn">📋 Copy Full JSON</button>
+
+            <pre id="debug" style="font-size:13px;color:#555;display:none;"></pre>
+        </div>
+    </div>
+
+    <script>
+        const CVSQL = "df2fccb3ec825707b7da9aa0b8a474fcca279ff8";
+        const L3 = "KREMBNPL";
+
+        const ids = {
+            applicant: document.getElementById("applicant"),
+            timeslot: document.getElementById("timeslot"),
+            detail: document.getElementById("detail"),
+            email: document.getElementById("email"),
+            phone: document.getElementById("phone")
+        };
+        const jsonInput = document.getElementById("jsonInput");
+        const result = document.getElementById("result");
+        const fullJson = document.getElementById("fullJson");
+        const debug = document.getElementById("debug");
+
+        function norm(v) { return v === null || v === undefined ? '' : String(v).trim(); }
+
+        async function sha256Hex(str) {
+            const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+        }
+
+        document.getElementById("fillBtn").onclick = () => {
+            jsonInput.value = JSON.stringify({
+                applicant_id: 5256,
+                timeslot_id: "4c7dfad2-2eec-45a6-aabe-3c3c1c59ef65",
+                captcha_uuid: "69803bcb-c682-45df-b9a9-6960272bb232",
+                email_verification_id: 9556,
+                phone_verification_id: 9556,
+                detail_verification_id: 9556,
+                user_identity: ""
+            }, null, 2);
+        };
+
+        document.getElementById("parseBtn").onclick = () => {
+            try {
+                const data = JSON.parse(jsonInput.value);
+                ids.applicant.value = data.applicant_id || "";
+                ids.timeslot.value = data.timeslot_id || "";
+                ids.detail.value = data.detail_verification_id || "";
+                ids.email.value = data.email_verification_id || "";
+                ids.phone.value = data.phone_verification_id || "";
+                result.textContent = "✅ Fields extracted. You can edit them below.";
+            } catch (e) {
+                result.textContent = "❌ Invalid JSON: " + e.message;
+            }
+        };
+
+        document.getElementById("generateBtn").onclick = async () => {
+            // Always take the latest values from inputs, not old textarea
+            const data = {
+                applicant_id: norm(ids.applicant.value),
+                timeslot_id: norm(ids.timeslot.value),
+                email_verification_id: norm(ids.email.value),
+                phone_verification_id: norm(ids.phone.value),
+                detail_verification_id: norm(ids.detail.value),
+            };
+
+            const parts = [
+                CVSQL,
+                data.applicant_id,
+                data.detail_verification_id,
+                data.email_verification_id,
+                data.phone_verification_id,
+                data.timeslot_id,
+                L3
+            ];
+
+            const fullInput = parts.join("");
+            const hash = await sha256Hex(fullInput);
+            data.user_identity = hash;
+
+            result.textContent = "✅ user_identity:\n" + hash;
+            fullJson.textContent = JSON.stringify(data, null, 2);
+
+            debug.style.display = "block";
+            debug.textContent = "Full input string:\n" + JSON.stringify(fullInput) + "\n\nParts:\n" + JSON.stringify(parts, null, 2);
+        };
+
+        function copyText(id) {
+            const text = document.getElementById(id).textContent;
+            navigator.clipboard.writeText(text).then(() => alert("✅ Copied!"));
+        }
+
+        document.getElementById("copyHashBtn").onclick = () => copyText("result");
+        document.getElementById("copyJsonBtn").onclick = () => copyText("fullJson");
+    </script>
+</body>
+
+</html>
