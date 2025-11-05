@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>User Identity Hash Generator</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         :root {
             --bg: #f6f8fb;
             --card: #fff;
@@ -21,7 +25,8 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            color: #1f2937
+            color: #1f2937;
+            margin: 0;
         }
 
         .card {
@@ -45,7 +50,8 @@
             border-radius: 8px;
             border: 1px solid #ccc;
             font-size: 14px;
-            margin-top: 4px
+            margin-top: 0;
+            box-sizing: border-box;
         }
 
         .row {
@@ -75,19 +81,31 @@
         }
 
         .section {
-            margin-top: 18px
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 10px
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 16px;
+        }
+
+        .field-wrapper {
+            background: #f9fafb;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
         }
 
         label {
             font-weight: 600;
             font-size: 13px;
-            color: #555
+            color: #555;
+            display: block;
+            margin-bottom: 8px;
         }
 
         pre {
@@ -106,6 +124,18 @@
 
         .copy-btn:hover {
             background: #009657
+        }
+
+        h3 {
+            margin: 0 0 12px 0;
+            font-size: 16px;
+            color: #374151;
+        }
+
+        h4 {
+            margin: 16px 0 8px 0;
+            font-size: 15px;
+            color: #374151;
         }
     </style>
 </head>
@@ -134,23 +164,23 @@
         <div class="section">
             <h3>Editable Extracted Fields</h3>
             <div class="grid">
-                <div>
+                <div class="field-wrapper">
                     <label>Applicant ID</label>
                     <input id="applicant" placeholder="applicant_id">
                 </div>
-                <div>
+                <div class="field-wrapper">
                     <label>Timeslot ID</label>
                     <input id="timeslot" placeholder="timeslot_id">
                 </div>
-                <div>
+                <div class="field-wrapper">
                     <label>Detail Verification ID</label>
                     <input id="detail" placeholder="detail_verification_id">
                 </div>
-                <div>
+                <div class="field-wrapper">
                     <label>Email Verification ID</label>
                     <input id="email" placeholder="email_verification_id">
                 </div>
-                <div>
+                <div class="field-wrapper">
                     <label>Phone Verification ID</label>
                     <input id="phone" placeholder="phone_verification_id">
                 </div>
@@ -162,7 +192,7 @@
             <pre id="result">Waiting...</pre>
             <button id="copyHashBtn" class="copy-btn">📋 Copy user_identity</button>
 
-            <h4 style="margin-top:16px;">Full JSON (with user_identity)</h4>
+            <h4>Full JSON (with user_identity)</h4>
             <pre id="fullJson">---</pre>
             <button id="copyJsonBtn" class="copy-btn">📋 Copy Full JSON</button>
 
@@ -219,6 +249,8 @@
             }
         };
 
+        let generatedHash = "";
+
         document.getElementById("generateBtn").onclick = async () => {
             // Always take the latest values from inputs, not old textarea
             const data = {
@@ -242,6 +274,7 @@
             const fullInput = parts.join("");
             const hash = await sha256Hex(fullInput);
             data.user_identity = hash;
+            generatedHash = hash;
 
             result.textContent = "✅ user_identity:\n" + hash;
             fullJson.textContent = JSON.stringify(data, null, 2);
@@ -255,7 +288,13 @@
             navigator.clipboard.writeText(text).then(() => alert("✅ Copied!"));
         }
 
-        document.getElementById("copyHashBtn").onclick = () => copyText("result");
+        document.getElementById("copyHashBtn").onclick = () => {
+            if (generatedHash) {
+                navigator.clipboard.writeText(generatedHash).then(() => alert("✅ Copied!"));
+            } else {
+                alert("⚠️ Generate a hash first!");
+            }
+        };
         document.getElementById("copyJsonBtn").onclick = () => copyText("fullJson");
     </script>
 </body>

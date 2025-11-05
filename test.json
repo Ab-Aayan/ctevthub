@@ -1,0 +1,1448 @@
+{
+    "_id": {
+        "$oid": "68341e44948bbd1a8e6616bc"
+    },
+    "categoryId": {
+        "$oid": "680fa6bc797100e606929667"
+    },
+    "levelId": {
+        "$numberInt": "17"
+    },
+    "levelName": "NNC License Exam - Set 2 (MCQs)",
+    "questionCount": {
+        "$numberInt": "109"
+    },
+    "levelUnlock": false,
+    "questions": [
+        {
+            "title_name": "Which of the following is not a type of hospital-acquired infection?",
+            "options": {
+                "A": "Nosocomial infection",
+                "B": "Iatrogenic infection",
+                "C": "Physician-acquired infection",
+                "D": "Idiopathic infection"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d82"
+            }
+        },
+        {
+            "title_name": "Health teaching comes under which level of prevention?",
+            "options": {
+                "A": "Primary prevention",
+                "B": "Primordial prevention",
+                "C": "Secondary prevention",
+                "D": "Tertiary prevention"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d83"
+            }
+        },
+        {
+            "title_name": "The umbilical cord contains: Note and hint: In umbilical artery, arteries carry deoxygenated blood and vein carries oxygenated blood.",
+            "options": {
+                "A": "2 arteries & 2 veins",
+                "B": "2 arteries & 1 vein",
+                "C": "1 artery & 1 vein",
+                "D": "2 veins & 1 artery"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d84"
+            }
+        },
+        {
+            "title_name": "Low birth weight is less than: Note and hint: LBW is less than 2500 gms, Very LBW is less than 1500 gms, and extremely LBW is less than 1000 gms.",
+            "options": {
+                "A": "2500 grams",
+                "B": "1500 grams",
+                "C": "1000 grams",
+                "D": "4000 grams"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d85"
+            }
+        },
+        {
+            "title_name": "Full form of PCV is:",
+            "options": {
+                "A": "Pneumococcal Vaccine",
+                "B": "Pneumococcal Conjugate Vaccine",
+                "C": "Pneumococcal Conjugative Volume",
+                "D": "None of the above"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d86"
+            }
+        },
+        {
+            "title_name": "Full form of TPN is:",
+            "options": {
+                "A": "Total Parenteral Nutrition",
+                "B": "Total Packed Nutrition",
+                "C": "Total Parenteral Need",
+                "D": "Triglyceride Parenteral Nutrition"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d87"
+            }
+        },
+        {
+            "title_name": "Following NG feeding to the client in the medical ward, what should be done?",
+            "options": {
+                "A": "Instill plain water 30 ml",
+                "B": "Clamp the tube",
+                "C": "Position the patient",
+                "D": "Remove NG tube"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d88"
+            }
+        },
+        {
+            "title_name": "Excessive oxygen in infants leads to: Note and hint: In premature infants, excessive oxygen has deleterious effects on the developing retina and causes ROP.",
+            "options": {
+                "A": "Retinal detachment",
+                "B": "Retinopathy of prematurity",
+                "C": "Retinoblastoma",
+                "D": "Optic nerve damage"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d89"
+            }
+        },
+        {
+            "title_name": "A client using heroin goes into withdrawal. What signs can be seen?",
+            "options": {
+                "A": "Nausea, vomiting, headache",
+                "B": "Headache, dizziness",
+                "C": "Tremor, seizure, headache",
+                "D": "Fever, pain, nausea"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d8a"
+            }
+        },
+        {
+            "title_name": "A client using Haloperidol is being discharged from the hospital. What health education should be given?",
+            "options": {
+                "A": "Avoid driving",
+                "B": "Avoid alcohol and cheese",
+                "C": "Avoid use of aspirin",
+                "D": "Don't walk alone"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d8b"
+            }
+        },
+        {
+            "title_name": "The most important indicator of increased intracranial pressure is: Note and hint: Initially there is headache followed by nausea and vomiting.",
+            "options": {
+                "A": "Nausea & vomiting",
+                "B": "Headache",
+                "C": "Increase in diastolic pressure",
+                "D": "Fever"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d8c"
+            }
+        },
+        {
+            "title_name": "The antidote for opioid poisoning is:",
+            "options": {
+                "A": "Warfarin",
+                "B": "Naloxone",
+                "C": "Calcium gluconate",
+                "D": "Vitamin K"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d8d"
+            }
+        },
+        {
+            "title_name": "What are the color codes of triage in a hospital setting? Note and hint: Look in another paper for explanation.",
+            "options": {
+                "A": "Red, pink, white, purple",
+                "B": "Black, white, grey, yellow",
+                "C": "Pink, green, yellow, red",
+                "D": "Red, yellow, green, black"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d8e"
+            }
+        },
+        {
+            "title_name": "After a lumbar puncture, the baby should be kept in which position?",
+            "options": {
+                "A": "Supine position to prevent headache",
+                "B": "Prone position to promote blood supply",
+                "C": "Side lying to promote CSF flow",
+                "D": "Trendelenburg position"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d8f"
+            }
+        },
+        {
+            "title_name": "The patient is admitted to the ward. In which position should they be kept?",
+            "options": {
+                "A": "Prone",
+                "B": "Orthopneic",
+                "C": "Head elevated",
+                "D": "Supine"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d90"
+            }
+        },
+        {
+            "title_name": "The patient has undergone tracheostomy surgery. After surgery, the patient should be taught to have:",
+            "options": {
+                "A": "Laryngeal speech",
+                "B": "Pharyngeal speech",
+                "C": "Esophageal speech",
+                "D": "Tracheal speech"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d91"
+            }
+        },
+        {
+            "title_name": "Drugs are mostly absorbed in:",
+            "options": {
+                "A": "Empty stomach",
+                "B": "Before meal",
+                "C": "During meal",
+                "D": "After meal"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d92"
+            }
+        },
+        {
+            "title_name": "Most nutrients are absorbed in:",
+            "options": {
+                "A": "Colon",
+                "B": "Small intestine",
+                "C": "Stomach",
+                "D": "Descending colon"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d93"
+            }
+        },
+        {
+            "title_name": "The SA node is located at:",
+            "options": {
+                "A": "Right atrium near superior vena cava",
+                "B": "Left atrium",
+                "C": "Pulmonary valve",
+                "D": "Interventricular septum"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d94"
+            }
+        },
+        {
+            "title_name": "The volume of air that remains after forceful expiration along with maximum inspiration is: Note and hint: Look at the chapter on the respiratory system in integrated science.",
+            "options": {
+                "A": "Vital capacity",
+                "B": "Expiratory reserve volume",
+                "C": "Tidal volume",
+                "D": "Residual volume"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d95"
+            }
+        },
+        {
+            "title_name": "Visual signals are interpreted by:",
+            "options": {
+                "A": "Frontal lobe",
+                "B": "Parietal lobe",
+                "C": "Temporal lobe",
+                "D": "Occipital lobe"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d96"
+            }
+        },
+        {
+            "title_name": "Which body part is best for taking O2 saturation in a client with COPD?",
+            "options": {
+                "A": "Left toe",
+                "B": "Right toe",
+                "C": "Leg finger",
+                "D": "Hand finger"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d97"
+            }
+        },
+        {
+            "title_name": "What is the immediate complication during the postoperative period?",
+            "options": {
+                "A": "Nausea & vomiting",
+                "B": "Respiratory distress",
+                "C": "Fever",
+                "D": "Hemorrhage"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d98"
+            }
+        },
+        {
+            "title_name": "Oral contraceptives act by:",
+            "options": {
+                "A": "Preventing ovulation",
+                "B": "Making endometrium non-reactive to embryo",
+                "C": "Making inactive to sperm",
+                "D": "Inhibiting sperm penetration to the ovum"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d99"
+            }
+        },
+        {
+            "title_name": "Which dressing is done for the condition of bleeding? Note and hint: Pressure bandaging causes compression effect in blood vessels and prevents bleeding.",
+            "options": {
+                "A": "Pressure dressing",
+                "B": "Dry dressing",
+                "C": "Hydrocolloid dressing",
+                "D": "Antibiotic dressing"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d9a"
+            }
+        },
+        {
+            "title_name": "Which fluid is prescribed in immediate burn cases?",
+            "options": {
+                "A": "Ringer's Lactate",
+                "B": "Normal Saline",
+                "C": "5% Dextrose",
+                "D": "Colloid"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d9b"
+            }
+        },
+        {
+            "title_name": "Which dressing is done on a burned body?",
+            "options": {
+                "A": "Pressure dressing",
+                "B": "Wet dressing",
+                "C": "Antibiotic dressing",
+                "D": "Dry dressing"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d9c"
+            }
+        },
+        {
+            "title_name": "Which diet is prescribed for a patient with Nephrotic Syndrome? Note and hint: In Nephrotic Syndrome, there is loss of protein in excessive amounts.",
+            "options": {
+                "A": "High protein, high carbohydrate",
+                "B": "Low fat, high protein",
+                "C": "High fat, high protein, high carbohydrate",
+                "D": "High calorie, high glucose"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d9d"
+            }
+        },
+        {
+            "title_name": "The direct cause of obstetric death is: Note and hint: PPH refers to postpartum hemorrhage and is the leading cause of obstetric death in developing countries like Nepal.",
+            "options": {
+                "A": "Preeclampsia",
+                "B": "Cardiac disease",
+                "C": "PPH",
+                "D": "Infection"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d9e"
+            }
+        },
+        {
+            "title_name": "Signs of Nephrotic Syndrome include: Note and hint: Diagnosis of Nephrotic Syndrome is based on nephrotic range proteinuria which is >3.5 gm/24 hours urine collection.",
+            "options": {
+                "A": "Edema",
+                "B": "Proteinuria",
+                "C": "Vomiting",
+                "D": "Fever"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031d9f"
+            }
+        },
+        {
+            "title_name": "Which nerve is affected when the face is drawn from right to left? Note and hint: In facial nerve palsy, the face is drawn to the opposite side as the opposite side muscles and nerve are intact.",
+            "options": {
+                "A": "Left facial nerve",
+                "B": "Trigeminal nerve",
+                "C": "Right facial nerve",
+                "D": "Brachial plexus"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031da0"
+            }
+        },
+        {
+            "title_name": "Total weight gain during pregnancy is:",
+            "options": {
+                "A": "10 kg",
+                "B": "12 kg",
+                "C": "11 kg",
+                "D": "25 kg"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031da1"
+            }
+        },
+        {
+            "title_name": "Which hormone causes nausea and vomiting during the first trimester?",
+            "options": {
+                "A": "Estrogen",
+                "B": "Progesterone",
+                "C": "HCG",
+                "D": "Prolactin"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031da2"
+            }
+        },
+        {
+            "title_name": "Which diet is necessary during pregnancy in anemic women? Note and hint: Due to hemodilution, low intake of iron, pregnant women are prone to develop anemia.",
+            "options": {
+                "A": "Rice, fried meats",
+                "B": "Yellow fruits, spinach",
+                "C": "Liver, red meat",
+                "D": "Green leafy vegetables, pulses, cereals"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031da3"
+            }
+        },
+        {
+            "title_name": "Which vitamin deficiency occurs in people taking a vegetarian diet only?",
+            "options": {
+                "A": "Vitamin B12",
+                "B": "Biotin",
+                "C": "Vitamin B Complex",
+                "D": "Pyridoxine"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031da4"
+            }
+        },
+        {
+            "title_name": "How are vital signs assessed in a newborn baby? Note and hint: In newborn infants, heart rate is assessed rather than pulse.",
+            "options": {
+                "A": "Temperature, pulse, respiration",
+                "B": "Blood pressure, respiration",
+                "C": "Respiration, blood pressure, pulse",
+                "D": "Respiration, heart rate, temperature"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031da5"
+            }
+        },
+        {
+            "title_name": "According to Erik Erikson's theory of development, young adults belong to which stage?",
+            "options": {
+                "A": "Autonomy vs. Shame and Doubt",
+                "B": "Intimacy vs. Isolation",
+                "C": "Inferiority vs. Guilt",
+                "D": "Trust vs. Mistrust"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031da6"
+            }
+        },
+        {
+            "title_name": "According to Erik Erikson's theory of development, toddlers belong to which stage?",
+            "options": {
+                "A": "Trust vs. Mistrust",
+                "B": "Intimacy vs. Isolation",
+                "C": "Inferiority vs. Guilt",
+                "D": "Autonomy vs. Shame and Doubt"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031da7"
+            }
+        },
+        {
+            "title_name": "Which position is best for an enema?",
+            "options": {
+                "A": "Right Sims position",
+                "B": "Prone",
+                "C": "Left Sims position",
+                "D": "Dorsal recumbent"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031da8"
+            }
+        },
+        {
+            "title_name": "PRN refers to: Note and hint: Refer to section fundamentals of Nursing for other acronyms.",
+            "options": {
+                "A": "At bedtime",
+                "B": "Immediate",
+                "C": "When necessary",
+                "D": "Before meal"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031da9"
+            }
+        },
+        {
+            "title_name": "Which hormone is released by the adrenal gland during stress situations?",
+            "options": {
+                "A": "ACTH",
+                "B": "Mineralocorticoids",
+                "C": "Glucocorticoids",
+                "D": "Epinephrine"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031daa"
+            }
+        },
+        {
+            "title_name": "What are the steps of waste disposal?",
+            "options": {
+                "A": "Storage, collection, disposal",
+                "B": "Collection, storage, disposal",
+                "C": "Collection, disposal, storage",
+                "D": "Storage, disposal, collection"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dab"
+            }
+        },
+        {
+            "title_name": "Which is the unhygienic method of waste disposal?",
+            "options": {
+                "A": "Controlled tipping",
+                "B": "Dumping",
+                "C": "Incineration",
+                "D": "Burning"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dac"
+            }
+        },
+        {
+            "title_name": "Getting things done properly is:",
+            "options": {
+                "A": "Management",
+                "B": "Leadership",
+                "C": "Supervision",
+                "D": "Coordination"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dad"
+            }
+        },
+        {
+            "title_name": "International Nurses Day is celebrated on:",
+            "options": {
+                "A": "10th May",
+                "B": "12th June",
+                "C": "11th November",
+                "D": "12th May"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dae"
+            }
+        },
+        {
+            "title_name": "IPV vaccine is given at which week according to the national immunization schedule of Nepal?",
+            "options": {
+                "A": "6 weeks",
+                "B": "10 weeks",
+                "C": "14 weeks",
+                "D": "9 months"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031daf"
+            }
+        },
+        {
+            "title_name": "In the second stage of labor, FHS should be monitored:",
+            "options": {
+                "A": "Every 1 hour",
+                "B": "After each uterine contraction",
+                "C": "Every 15 minutes",
+                "D": "Every 30 minutes"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031db0"
+            }
+        },
+        {
+            "title_name": "The lifespan of an RBC is:",
+            "options": {
+                "A": "24 hours",
+                "B": "48 hours",
+                "C": "36 hours",
+                "D": "120 days"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031db1"
+            }
+        },
+        {
+            "title_name": "The drug of choice for an obese patient with type II diabetes mellitus is: Note and hint: Metformin is an oral diabetes medicine that helps control blood sugar levels, used to improve blood sugar control in type 2 diabetes.",
+            "options": {
+                "A": "Insulin",
+                "B": "Metformin",
+                "C": "Glimepiride",
+                "D": "Acarbose"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031db2"
+            }
+        },
+        {
+            "title_name": "For pelvic examination, the client should be in:",
+            "options": {
+                "A": "Prone position",
+                "B": "Sims position",
+                "C": "Trendelenburg position",
+                "D": "Lithotomy position"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031db3"
+            }
+        },
+        {
+            "title_name": "The main cause of anemia during pregnancy is:",
+            "options": {
+                "A": "Increase in WBC",
+                "B": "Increase in plasma volume",
+                "C": "Low iron intake",
+                "D": "Increase in platelets"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031db4"
+            }
+        },
+        {
+            "title_name": "If jaundice is seen in a newborn baby after 24 hours, it is called:",
+            "options": {
+                "A": "Pathological",
+                "B": "Physiological",
+                "C": "RH incompatibility",
+                "D": "Anemia"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031db5"
+            }
+        },
+        {
+            "title_name": "A woman is using OCP. What should be asked about?",
+            "options": {
+                "A": "Hair fall",
+                "B": "Rash and itches",
+                "C": "Abdominal cramping and backache",
+                "D": "Anorexia"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031db6"
+            }
+        },
+        {
+            "title_name": "On the 2nd day of the postpartum period, if the fundus is felt on the right side, what is the cause?",
+            "options": {
+                "A": "Full bladder that pushes the uterus to the right",
+                "B": "Sub-involution of the uterus",
+                "C": "Retention of urine",
+                "D": "Normal phenomenon"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031db7"
+            }
+        },
+        {
+            "title_name": "After an operation, the most common complication is:",
+            "options": {
+                "A": "Hemorrhage",
+                "B": "Infection",
+                "C": "Wound dehiscence",
+                "D": "Pain"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031db8"
+            }
+        },
+        {
+            "title_name": "While providing oral care to an unconscious client, the client should be in:",
+            "options": {
+                "A": "Side lying",
+                "B": "Prone",
+                "C": "Supine",
+                "D": "Semi-Fowler’s"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031db9"
+            }
+        },
+        {
+            "title_name": "The best time for collection of sputum is:",
+            "options": {
+                "A": "Early in the morning",
+                "B": "After meal",
+                "C": "After breakfast",
+                "D": "At bedtime"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dba"
+            }
+        },
+        {
+            "title_name": "To send urine for urine culture and sensitivity, which urine should be collected?",
+            "options": {
+                "A": "Midstream urine",
+                "B": "From urobag",
+                "C": "From catheter",
+                "D": "From bedpan"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dbb"
+            }
+        },
+        {
+            "title_name": "Which is the best site for IM injection in a baby?",
+            "options": {
+                "A": "Vastus lateralis",
+                "B": "Deltoid",
+                "C": "Dorsogluteal",
+                "D": "Ventrogluteal"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dbc"
+            }
+        },
+        {
+            "title_name": "What is the sequence of third stage management?",
+            "options": {
+                "A": "Oxytocin, fundal massage",
+                "B": "Fundal massage, oxytocin, CCT",
+                "C": "Oxytocin, CCT, fundal massage",
+                "D": "Fundal massage, oxytocin, CCT"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dbd"
+            }
+        },
+        {
+            "title_name": "Scalp vein needle is used in:",
+            "options": {
+                "A": "Neonate",
+                "B": "Infant",
+                "C": "Children",
+                "D": "Old man"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dbe"
+            }
+        },
+        {
+            "title_name": "To remove foul smelling, what should be used?",
+            "options": {
+                "A": "Deodorant",
+                "B": "Disinfectant",
+                "C": "Sterilization",
+                "D": "Antiseptic"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dbf"
+            }
+        },
+        {
+            "title_name": "The bell of the stethoscope is used to hear which sound?",
+            "options": {
+                "A": "Lung sound",
+                "B": "Bowel sound",
+                "C": "Tympanic sound",
+                "D": "Heart sound"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dc0"
+            }
+        },
+        {
+            "title_name": "During blood transfusion, if adverse reactions occur, what should be done?",
+            "options": {
+                "A": "Stop the transfusion",
+                "B": "Call the doctor",
+                "C": "It is a normal phenomenon",
+                "D": "Continue blood transfusion"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dc1"
+            }
+        },
+        {
+            "title_name": "Which fluid is best for a head injury? Note and hint: Although RL (crystalloid) is preferred, in case of head injury, NS is good as it has no calcium and does not deteriorate the brain injury.",
+            "options": {
+                "A": "Ringer's Lactate",
+                "B": "Normal Saline",
+                "C": "Colloid",
+                "D": "5% Dextrose"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dc2"
+            }
+        },
+        {
+            "title_name": "If a manager gives their responsibility to subordinates, it is called:",
+            "options": {
+                "A": "Power",
+                "B": "Delegation",
+                "C": "Authority",
+                "D": "Accountability"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dc3"
+            }
+        },
+        {
+            "title_name": "A nurse provides the wrong medication to a client. What is the priority action they should take?",
+            "options": {
+                "A": "Check the client’s condition",
+                "B": "Documentation",
+                "C": "Write an incident report",
+                "D": "Notify the physician about the incident"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dc4"
+            }
+        },
+        {
+            "title_name": "Bird flu falls under:",
+            "options": {
+                "A": "Sporadic",
+                "B": "Epidemic",
+                "C": "Pandemic",
+                "D": "Endemic"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dc5"
+            }
+        },
+        {
+            "title_name": "A disease occurring frequently in a community is:",
+            "options": {
+                "A": "Epidemic",
+                "B": "Endemic",
+                "C": "Pandemic",
+                "D": "Sporadic"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dc6"
+            }
+        },
+        {
+            "title_name": "A child is suffering from severe pneumonia. What should be done according to IMCI management?",
+            "options": {
+                "A": "Refer to hospital",
+                "B": "Provide antibiotics",
+                "C": "Provide adequate breastfeeding",
+                "D": "Provide bronchodilators"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dc7"
+            }
+        },
+        {
+            "title_name": "A nurse is assigned to each function (work of each client). Which type of assignment is done?",
+            "options": {
+                "A": "Functional method",
+                "B": "Case management",
+                "C": "Team method",
+                "D": "Patient-centered"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dc8"
+            }
+        },
+        {
+            "title_name": "In which type of leadership is there a feeling of 'we' rather than 'I'?",
+            "options": {
+                "A": "Autocratic",
+                "B": "Democratic",
+                "C": "Laissez-faire",
+                "D": "Leading"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dc9"
+            }
+        },
+        {
+            "title_name": "The SA node is also known as:",
+            "options": {
+                "A": "Pacemaker",
+                "B": "Purkinje fiber",
+                "C": "AV bundle",
+                "D": "None"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dca"
+            }
+        },
+        {
+            "title_name": "What are the complications of myocardial infarction?",
+            "options": {
+                "A": "Tachycardia",
+                "B": "Hypertension",
+                "C": "Dysrhythmia",
+                "D": "Heart failure"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dcb"
+            }
+        },
+        {
+            "title_name": "The common site of ectopic pregnancy is:",
+            "options": {
+                "A": "Ampulla",
+                "B": "Ovary",
+                "C": "Isthmus",
+                "D": "Uterus"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dcc"
+            }
+        },
+        {
+            "title_name": "Secretion of milk is caused by which pituitary hormone?",
+            "options": {
+                "A": "Prolactin",
+                "B": "Thyroid-stimulating hormone",
+                "C": "Oxytocin",
+                "D": "Adrenaline"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dcd"
+            }
+        },
+        {
+            "title_name": "Complications of diabetes mellitus include:",
+            "options": {
+                "A": "Nephropathy",
+                "B": "Retinopathy",
+                "C": "Both",
+                "D": "None"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dce"
+            }
+        },
+        {
+            "title_name": "After thyroidectomy, for what complication should the nurse observe? Note and hint: With the thyroid gland, the parathyroid gland is also removed, and parathormone level decreases, leading to hypocalcemia.",
+            "options": {
+                "A": "Hypocalcemia",
+                "B": "Hyperkalemia",
+                "C": "Hypercalcemia",
+                "D": "Hyponatremia"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dcf"
+            }
+        },
+        {
+            "title_name": "If the pulse rate is below 60, it is called:",
+            "options": {
+                "A": "Bradycardia",
+                "B": "Tachycardia",
+                "C": "Bradypnea",
+                "D": "Tachypnea"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dd0"
+            }
+        },
+        {
+            "title_name": "Before giving digoxin, the pulse should be taken from:",
+            "options": {
+                "A": "Apical",
+                "B": "Both hand radial pulse",
+                "C": "Right hand radial pulse",
+                "D": "Apical pulse - radial pulse"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dd1"
+            }
+        },
+        {
+            "title_name": "Which person is more prone to bedsore?",
+            "options": {
+                "A": "70 years, malnourished, bedridden patient",
+                "B": "Obese patient who sits on a wheelchair",
+                "C": "Diabetic patient who is sleeping",
+                "D": "None"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dd2"
+            }
+        },
+        {
+            "title_name": "When a patient is sleeping in the supine position, which part is more prone to bedsore?",
+            "options": {
+                "A": "Sacrum",
+                "B": "Earlobe",
+                "C": "Leg",
+                "D": "Scapula"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dd3"
+            }
+        },
+        {
+            "title_name": "After a bronchoscopy, what should be seen in the patient before giving fluids? Note and hint: The pharyngeal reflex or gag reflex is a reflex contraction of the back of the throat, evoked by touching the roof of the mouth, the back of the tongue, the area around the tonsils, the uvula, and the back of the throat.",
+            "options": {
+                "A": "Palmar reflex",
+                "B": "Speech",
+                "C": "Vomiting",
+                "D": "Gag reflex"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dd4"
+            }
+        },
+        {
+            "title_name": "According to Maslow’s Hierarchy, which need is most important?",
+            "options": {
+                "A": "Safety need",
+                "B": "Physiological need",
+                "C": "Love & belonging",
+                "D": "Elimination need"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683424254a9a2ebe9b031dd5"
+            }
+        },
+        {
+            "title_name": "All are fat-soluble vitamins except:",
+            "options": {
+                "A": "Vitamin A",
+                "B": "Vitamin B",
+                "C": "Vitamin D",
+                "D": "Vitamin E"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2abc"
+            }
+        },
+        {
+            "title_name": "The number of calories provided by one gram of fat is:",
+            "options": {
+                "A": "5",
+                "B": "7",
+                "C": "9",
+                "D": "11"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2abd"
+            }
+        },
+        {
+            "title_name": "Tocopherol is the clinical name for:",
+            "options": {
+                "A": "Vitamin A",
+                "B": "Vitamin C",
+                "C": "Vitamin E",
+                "D": "Vitamin K"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2abe"
+            }
+        },
+        {
+            "title_name": "Enzymes are:",
+            "options": {
+                "A": "Protein",
+                "B": "Carbohydrate",
+                "C": "Fat",
+                "D": "Lipoprotein"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2abf"
+            }
+        },
+        {
+            "title_name": "The triad of clinical features of pellagra consists of all except:",
+            "options": {
+                "A": "Diarrhea",
+                "B": "Dermatitis",
+                "C": "Dementia",
+                "D": "Demyelination of spinal cord"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ac0"
+            }
+        },
+        {
+            "title_name": "Which of the following provides maximum energy?",
+            "options": {
+                "A": "Fat",
+                "B": "Carbohydrate",
+                "C": "Vitamin",
+                "D": "Protein"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ac1"
+            }
+        },
+        {
+            "title_name": "BCG stands for:",
+            "options": {
+                "A": "Bacteria Calmette Guerin",
+                "B": "Bacillus Calmette Guerin",
+                "C": "Bacterio Calmette Guerin",
+                "D": "Bactericidal Guerin"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ac2"
+            }
+        },
+        {
+            "title_name": "Which vaccine must not be frozen?",
+            "options": {
+                "A": "Polio & Measles",
+                "B": "Polio & BCG",
+                "C": "DPT & T.T.",
+                "D": "BCG & Measles"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ac3"
+            }
+        },
+        {
+            "title_name": "The oral contraceptive method for spacing between pregnancies is:",
+            "options": {
+                "A": "Diaphragm",
+                "B": "Condom",
+                "C": "IUD",
+                "D": "Oral pills"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ac4"
+            }
+        },
+        {
+            "title_name": "The length of the uterine tube is approximately:",
+            "options": {
+                "A": "5 cm",
+                "B": "10 cm",
+                "C": "15 cm",
+                "D": "All of the above"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ac5"
+            }
+        },
+        {
+            "title_name": "Which of the male structures is analogous to the female clitoris?",
+            "options": {
+                "A": "Glans penis",
+                "B": "Scrotum",
+                "C": "Testes",
+                "D": "Epididymis"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ac6"
+            }
+        },
+        {
+            "title_name": "In pregnancy, which of the following bacteria is predominant in the vagina?",
+            "options": {
+                "A": "Lactobacillus",
+                "B": "Peptostreptococcus",
+                "C": "Listeria monocytogenes",
+                "D": "Streptococcus agalactiae"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ac7"
+            }
+        },
+        {
+            "title_name": "Which finding suggests that a woman has had a previous vaginal delivery?",
+            "options": {
+                "A": "Closely apposed labia majora",
+                "B": "Cervix length equal to uterine body",
+                "C": "Perineal scarring",
+                "D": "Intact hymen"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ac8"
+            }
+        },
+        {
+            "title_name": "Which of the following processes leads to uterine enlargement in pregnancy?",
+            "options": {
+                "A": "Hypertrophy",
+                "B": "Hyperplasia",
+                "C": "Decidualization",
+                "D": "Collagen dissociation"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ac9"
+            }
+        },
+        {
+            "title_name": "Which is the narrowest diameter of the pelvic inlet through which the fetal head must pass?",
+            "options": {
+                "A": "True conjugate",
+                "B": "Diagonal conjugate",
+                "C": "Transverse diameter",
+                "D": "Obstetrical conjugate"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2aca"
+            }
+        },
+        {
+            "title_name": "Engagement occurs when the biparietal diameter of the fetal head descends below the level of which of the following?",
+            "options": {
+                "A": "Mid pelvis",
+                "B": "Pelvic inlet",
+                "C": "Pelvic floor",
+                "D": "Ischial tuberosities"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2acb"
+            }
+        },
+        {
+            "title_name": "On what day does the blastocyst typically start to implant into the uterus?",
+            "options": {
+                "A": "3–4 days",
+                "B": "6–7 days",
+                "C": "9–10 days",
+                "D": "14–15 days"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2acc"
+            }
+        },
+        {
+            "title_name": "The placenta has tissues from:",
+            "options": {
+                "A": "Maternal & fetal",
+                "B": "Only maternal",
+                "C": "Only fetal",
+                "D": "Abnormal"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2acd"
+            }
+        },
+        {
+            "title_name": "The female reproductive hormones include:",
+            "options": {
+                "A": "Estrogen & progesterone",
+                "B": "Androgen & estrogen",
+                "C": "Testosterone & androgen",
+                "D": "All of the above"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ace"
+            }
+        },
+        {
+            "title_name": "The name 'embryo' is given up to:",
+            "options": {
+                "A": "0–14 days",
+                "B": "15 days–8 weeks",
+                "C": "9–16 weeks",
+                "D": "17 weeks to birth"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2acf"
+            }
+        },
+        {
+            "title_name": "Maternal complications that lead to preterm labor are:",
+            "options": {
+                "A": "Antepartum hemorrhage",
+                "B": "Cervical incompetence",
+                "C": "Polyhydramnios",
+                "D": "All of the above"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ad0"
+            }
+        },
+        {
+            "title_name": "Fetal macrosomia indicates:",
+            "options": {
+                "A": "Enlargement of fetal abdomen",
+                "B": "Enlargement of fetal skull",
+                "C": "Generalized fetal enlargement",
+                "D": "All of the above"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ad1"
+            }
+        },
+        {
+            "title_name": "The placenta that is directly anchored to the myometrium is:",
+            "options": {
+                "A": "Adherent placenta",
+                "B": "Placenta accreta",
+                "C": "Retained placenta",
+                "D": "All of the above"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ad2"
+            }
+        },
+        {
+            "title_name": "The shoulder presentation is called when:",
+            "options": {
+                "A": "The shoulder presents over the cervical opening during labor",
+                "B": "The shoulder presents anteriorly at the pelvic brim",
+                "C": "The shoulder presents at the inlet",
+                "D": "All of the above"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ad3"
+            }
+        },
+        {
+            "title_name": "In brow presentation, the fetal attitude is one of:",
+            "options": {
+                "A": "Complete flexion",
+                "B": "Complete extension",
+                "C": "In between full extension & full flexion",
+                "D": "All of the above"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683445b1d2124b791d6f2ad4"
+            }
+        }
+    ],
+    "createdAt": {
+        "$date": {
+            "$numberLong": "1745856193030"
+        }
+    },
+    "updatedAt": {
+        "$date": {
+            "$numberLong": "1748256177103"
+        }
+    },
+    "__v": {
+        "$numberInt": "2"
+    }
+}

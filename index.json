@@ -1,0 +1,1396 @@
+{
+    "_id": {
+        "$oid": "68298c5d4d7498823cef8c42"
+    },
+    "categoryId": {
+        "$oid": "68298c594d7498823cef8c2c"
+    },
+    "levelId": {
+        "$numberInt": "10"
+    },
+    "levelName": "NHPC CMLT License Exam - Set 1 (MCQs)",
+    "questionCount": {
+        "$numberInt": "105"
+    },
+    "levelUnlock": false,
+    "questions": [
+        {
+            "title_name": "Which of the following tests is primarily used for diagnosing diabetes mellitus?",
+            "options": {
+                "A": "Hemoglobin A1c",
+                "B": "Complete blood count (CBC)",
+                "C": "Blood urea nitrogen (BUN)",
+                "D": "Liver function test (LFT)"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b2a"
+            }
+        },
+        {
+            "title_name": "The main function of a centrifuge in the laboratory is to:",
+            "options": {
+                "A": "Sterilize instruments",
+                "B": "Separate components of blood",
+                "C": "Mix chemicals",
+                "D": "Measure chemical reactions"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b2b"
+            }
+        },
+        {
+            "title_name": "Which of the following is the best method to sterilize heat-sensitive materials?",
+            "options": {
+                "A": "Autoclaving",
+                "B": "Dry heat sterilization",
+                "C": "Chemical sterilization",
+                "D": "Filtration"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b2c"
+            }
+        },
+        {
+            "title_name": "What does the term 'hematocrit' refer to?",
+            "options": {
+                "A": "The percentage of plasma in the blood",
+                "B": "The percentage of white blood cells in the blood",
+                "C": "The percentage of red blood cells in the blood",
+                "D": "The amount of hemoglobin in the blood"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b2d"
+            }
+        },
+        {
+            "title_name": "Which of the following tubes is used to collect blood for a complete blood count (CBC)?",
+            "options": {
+                "A": "Red top tube",
+                "B": "Blue top tube",
+                "C": "Lavender top tube",
+                "D": "Green top tube"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b2e"
+            }
+        },
+        {
+            "title_name": "The normal range for a white blood cell count in adults is:",
+            "options": {
+                "A": "3,500-10,500 cells/µL",
+                "B": "150,000-450,000 cells/µL",
+                "C": "4-6 g/dL",
+                "D": "80-100 mg/dL"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b2f"
+            }
+        },
+        {
+            "title_name": "The primary use of a spectrophotometer is to measure:",
+            "options": {
+                "A": "Blood pressure",
+                "B": "Light absorption",
+                "C": "pH levels",
+                "D": "Temperature"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b30"
+            }
+        },
+        {
+            "title_name": "Which of the following blood tests is used to assess kidney function?",
+            "options": {
+                "A": "Creatinine",
+                "B": "Hemoglobin",
+                "C": "Amylase",
+                "D": "Albumin"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b31"
+            }
+        },
+        {
+            "title_name": "What is the function of an incubator in a medical laboratory?",
+            "options": {
+                "A": "To sterilize equipment",
+                "B": "To maintain a controlled environment for microbial growth",
+                "C": "To mix chemicals",
+                "D": "To separate blood components"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b32"
+            }
+        },
+        {
+            "title_name": "Which of the following is NOT typically a part of a routine urinalysis?",
+            "options": {
+                "A": "pH measurement",
+                "B": "Red blood cell count",
+                "C": "Glucose levels",
+                "D": "Protein levels"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b33"
+            }
+        },
+        {
+            "title_name": "A gram stain is used primarily to classify bacteria based on their:",
+            "options": {
+                "A": "Shape",
+                "B": "Size",
+                "C": "Cell wall structure",
+                "D": "Growth pattern"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b34"
+            }
+        },
+        {
+            "title_name": "The presence of ketones in urine is commonly associated with:",
+            "options": {
+                "A": "Diabetes mellitus",
+                "B": "Liver disease",
+                "C": "Dehydration",
+                "D": "Kidney failure"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b35"
+            }
+        },
+        {
+            "title_name": "Which test is used to assess liver function by measuring the levels of ALT and AST?",
+            "options": {
+                "A": "Renal function test",
+                "B": "Lipid profile",
+                "C": "Liver function test",
+                "D": "Blood glucose test"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b36"
+            }
+        },
+        {
+            "title_name": "The purpose of the hemoglobin A1c test is to:",
+            "options": {
+                "A": "Measure the average blood glucose levels over the past 2-3 months",
+                "B": "Measure cholesterol levels",
+                "C": "Diagnose kidney disease",
+                "D": "Measure red blood cell count"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b37"
+            }
+        },
+        {
+            "title_name": "The blood component responsible for clotting is:",
+            "options": {
+                "A": "White blood cells",
+                "B": "Red blood cells",
+                "C": "Platelets",
+                "D": "Plasma"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b38"
+            }
+        },
+        {
+            "title_name": "Which of the following methods is used for testing the presence of bacteria in water?",
+            "options": {
+                "A": "Gram staining",
+                "B": "Biochemical testing",
+                "C": "Endotoxin testing",
+                "D": "Most probable number (MPN) method"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b39"
+            }
+        },
+        {
+            "title_name": "The correct order of draw for venipuncture tubes is:",
+            "options": {
+                "A": "Blue, red, green, lavender",
+                "B": "Red, green, blue, lavender",
+                "C": "Green, blue, red, lavender",
+                "D": "Blue, green, red, lavender"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b3a"
+            }
+        },
+        {
+            "title_name": "Which of the following is used to prevent the clotting of blood in a blood collection tube?",
+            "options": {
+                "A": "Heparin",
+                "B": "Sodium citrate",
+                "C": "EDTA",
+                "D": "All of the above"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b3b"
+            }
+        },
+        {
+            "title_name": "A positive result for the ELISA test indicates:",
+            "options": {
+                "A": "The presence of a specific antigen or antibody",
+                "B": "The presence of a virus",
+                "C": "Low levels of glucose",
+                "D": "A bacterial infection"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b3c"
+            }
+        },
+        {
+            "title_name": "The best temperature for storing most blood specimens is:",
+            "options": {
+                "A": "0°C",
+                "B": "4°C",
+                "C": "Room temperature",
+                "D": "37°C"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b3d"
+            }
+        },
+        {
+            "title_name": "Which of the following is a test used to detect tuberculosis?",
+            "options": {
+                "A": "Skin test (TST)",
+                "B": "PPD test",
+                "C": "Sputum culture",
+                "D": "All of the above"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b3e"
+            }
+        },
+        {
+            "title_name": "The most common cause of anemia in the world is:",
+            "options": {
+                "A": "Vitamin B12 deficiency",
+                "B": "Iron deficiency",
+                "C": "Hemophilia",
+                "D": "Leukemia"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b3f"
+            }
+        },
+        {
+            "title_name": "A patient with a high white blood cell count likely has:",
+            "options": {
+                "A": "Anemia",
+                "B": "Infection",
+                "C": "Liver disease",
+                "D": "Diabetes"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b40"
+            }
+        },
+        {
+            "title_name": "The primary role of a laboratory technician is to:",
+            "options": {
+                "A": "Perform surgeries",
+                "B": "Analyze laboratory results",
+                "C": "Diagnose diseases",
+                "D": "Administer medications"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b41"
+            }
+        },
+        {
+            "title_name": "In which of the following tests is a purple top tube used?",
+            "options": {
+                "A": "Blood glucose",
+                "B": "Complete blood count (CBC)",
+                "C": "Prothrombin time",
+                "D": "Coagulation studies"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b42"
+            }
+        },
+        {
+            "title_name": "Which of the following is used to monitor the level of cholesterol in the blood?",
+            "options": {
+                "A": "Lipid profile",
+                "B": "Complete blood count",
+                "C": "Liver function test",
+                "D": "Renal function test"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b43"
+            }
+        },
+        {
+            "title_name": "The most commonly used method to identify blood type is the:",
+            "options": {
+                "A": "Blood culture",
+                "B": "Coombs test",
+                "C": "Blood typing test",
+                "D": "Hemoglobin test"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b44"
+            }
+        },
+        {
+            "title_name": "The role of a clinical laboratory in the healthcare system is to:",
+            "options": {
+                "A": "Perform diagnostic tests",
+                "B": "Provide imaging services",
+                "C": "Perform surgeries",
+                "D": "Administer patient medications"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b45"
+            }
+        },
+        {
+            "title_name": "The purpose of a blood culture test is to detect:",
+            "options": {
+                "A": "Bacterial or fungal infections in the bloodstream",
+                "B": "Blood clotting disorders",
+                "C": "Anemia",
+                "D": "High blood pressure"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b46"
+            }
+        },
+        {
+            "title_name": "A common test used to assess thyroid function is the:",
+            "options": {
+                "A": "TSH test",
+                "B": "Glucose test",
+                "C": "BUN test",
+                "D": "CBC test"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b47"
+            }
+        },
+        {
+            "title_name": "Which of the following is used to assess the body’s ability to metabolize glucose?",
+            "options": {
+                "A": "Hemoglobin A1c",
+                "B": "Fasting blood glucose",
+                "C": "Oral glucose tolerance test",
+                "D": "All of the above"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b48"
+            }
+        },
+        {
+            "title_name": "The most common anticoagulant used in blood collection tubes is:",
+            "options": {
+                "A": "EDTA",
+                "B": "Sodium citrate",
+                "C": "Heparin",
+                "D": "Potassium oxalate"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b49"
+            }
+        },
+        {
+            "title_name": "A test commonly used to diagnose HIV infection is:",
+            "options": {
+                "A": "Western blot",
+                "B": "PCR (Polymerase chain reaction)",
+                "C": "ELISA",
+                "D": "All of the above"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b4a"
+            }
+        },
+        {
+            "title_name": "Which of the following is a sign of dehydration in a laboratory test?",
+            "options": {
+                "A": "High hemoglobin level",
+                "B": "Low blood urea nitrogen (BUN) level",
+                "C": "Low red blood cell count",
+                "D": "High blood glucose"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b4b"
+            }
+        },
+        {
+            "title_name": "A urinalysis is typically used to detect:",
+            "options": {
+                "A": "Blood in the urine",
+                "B": "Protein in the urine",
+                "C": "Glucose in the urine",
+                "D": "All of the above"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b4c"
+            }
+        },
+        {
+            "title_name": "The main purpose of the prothrombin time (PT) test is to:",
+            "options": {
+                "A": "Measure the ability of blood to clot",
+                "B": "Measure red blood cell count",
+                "C": "Assess liver function",
+                "D": "Assess kidney function"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b4d"
+            }
+        },
+        {
+            "title_name": "Which of the following is an example of an electrolyte test?",
+            "options": {
+                "A": "Sodium",
+                "B": "Potassium",
+                "C": "Calcium",
+                "D": "All of the above"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b4e"
+            }
+        },
+        {
+            "title_name": "Which of the following is used to assess a patient's hemoglobin levels?",
+            "options": {
+                "A": "Hemoglobin electrophoresis",
+                "B": "Hemoglobin A1c",
+                "C": "Complete blood count (CBC)",
+                "D": "Blood glucose test"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b4f"
+            }
+        },
+        {
+            "title_name": "A normal white blood cell count for an adult is typically between:",
+            "options": {
+                "A": "3,500-10,500 cells/µL",
+                "B": "5,000-15,000 cells/µL",
+                "C": "20,000-40,000 cells/µL",
+                "D": "10,000-30,000 cells/µL"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b50"
+            }
+        },
+        {
+            "title_name": "A patient with high levels of creatinine likely has issues with:",
+            "options": {
+                "A": "The liver",
+                "B": "The kidneys",
+                "C": "The heart",
+                "D": "The lungs"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b51"
+            }
+        },
+        {
+            "title_name": "The primary function of plasma is to:",
+            "options": {
+                "A": "Carry oxygen",
+                "B": "Transport nutrients",
+                "C": "Carry waste products",
+                "D": "Transport hormones"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b52"
+            }
+        },
+        {
+            "title_name": "The purpose of performing a Gram stain is to:",
+            "options": {
+                "A": "Classify bacteria based on their cell wall structure",
+                "B": "Identify viral infections",
+                "C": "Determine the level of glucose",
+                "D": "Assess kidney function"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b53"
+            }
+        },
+        {
+            "title_name": "The most commonly used method for bacterial identification is:",
+            "options": {
+                "A": "Gram staining",
+                "B": "Culturing",
+                "C": "PCR (Polymerase chain reaction)",
+                "D": "ELISA"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b54"
+            }
+        },
+        {
+            "title_name": "The process of separating plasma or serum from blood is called:",
+            "options": {
+                "A": "Centrifugation",
+                "B": "Filtration",
+                "C": "Incubation",
+                "D": "Incision"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b55"
+            }
+        },
+        {
+            "title_name": "Which of the following is a common method for determining blood glucose levels?",
+            "options": {
+                "A": "Oral glucose tolerance test",
+                "B": "Fasting blood glucose test",
+                "C": "Hemoglobin A1c test",
+                "D": "All of the above"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b56"
+            }
+        },
+        {
+            "title_name": "Which of the following is an example of a blood test to detect liver function?",
+            "options": {
+                "A": "AST (Aspartate aminotransferase)",
+                "B": "ALT (Alanine aminotransferase)",
+                "C": "Bilirubin",
+                "D": "All of the above"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b57"
+            }
+        },
+        {
+            "title_name": "A high level of bilirubin in the blood may indicate:",
+            "options": {
+                "A": "Liver disease",
+                "B": "Anemia",
+                "C": "Kidney disease",
+                "D": "Lung disease"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b58"
+            }
+        },
+        {
+            "title_name": "Which of the following tests is used to detect and monitor HIV infection?",
+            "options": {
+                "A": "ELISA test",
+                "B": "Western blot test",
+                "C": "PCR test",
+                "D": "All of the above"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b59"
+            }
+        },
+        {
+            "title_name": "Which of the following tests is used to assess the clotting ability of blood?",
+            "options": {
+                "A": "Prothrombin time (PT)",
+                "B": "Hemoglobin test",
+                "C": "Urinalysis",
+                "D": "Blood glucose test"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b5a"
+            }
+        },
+        {
+            "title_name": "Which of the following components is found in the plasma of blood?",
+            "options": {
+                "A": "Red blood cells",
+                "B": "White blood cells",
+                "C": "Platelets",
+                "D": "Proteins"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "682b1cac71c68f53d80f2b5b"
+            }
+        },
+        {
+            "title_name": "Bilirubin is formed in all the tissues, except ....",
+            "options": {
+                "A": "Liver",
+                "B": "Spleen",
+                "C": "Kidney",
+                "D": "Bone marrow"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "6836ca08a7f029538e69d793"
+            }
+        },
+        {
+            "title_name": "Normal colour of faeces is due to ....",
+            "options": {
+                "A": "Bilirubin",
+                "B": "Stercobilin",
+                "C": "Porphobilinogen",
+                "D": "Biliverdin"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "6836ca08a7f029538e69d794"
+            }
+        },
+        {
+            "title_name": "Uric acid is the end product of ....",
+            "options": {
+                "A": "Carbohydrate metabolism",
+                "B": "Lipid metabolism",
+                "C": "Protein metabolism",
+                "D": "Purine metabolism"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd597"
+            }
+        },
+        {
+            "title_name": "What is the normal range for urine protein to creatinine ratio?",
+            "options": {
+                "A": "<0.2",
+                "B": "<0.5",
+                "C": "<1.0",
+                "D": "<2.0"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd598"
+            }
+        },
+        {
+            "title_name": "LFT is done to check ....",
+            "options": {
+                "A": "High blood pressure",
+                "B": "Low blood pressure",
+                "C": "Kidney function",
+                "D": "Liver function"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd599"
+            }
+        },
+        {
+            "title_name": "The most abundant plasma protein is ....",
+            "options": {
+                "A": "Albumin",
+                "B": "Immunoglobulin",
+                "C": "Ceruloplasmin",
+                "D": "Transferrin"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd59a"
+            }
+        },
+        {
+            "title_name": "Ammonia is excreted as ammonium salts during metabolic acidosis but the majority is excreted as ....",
+            "options": {
+                "A": "Phosphates",
+                "B": "Creatine",
+                "C": "Uric acid",
+                "D": "Urea"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd59b"
+            }
+        },
+        {
+            "title_name": "Which of the following conditions can result in decreased blood urea levels?",
+            "options": {
+                "A": "Dehydration",
+                "B": "GI bleeding",
+                "C": "Liver disease",
+                "D": "High protein diet"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd59c"
+            }
+        },
+        {
+            "title_name": "Which is the longest part of the small intestine?",
+            "options": {
+                "A": "Duodenum",
+                "B": "Jejunum",
+                "C": "Ileum",
+                "D": "Cecum"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd59d"
+            }
+        },
+        {
+            "title_name": "The heart is located in ....",
+            "options": {
+                "A": "Pelvic cavity",
+                "B": "Thoracic cavity",
+                "C": "Abdominal cavity",
+                "D": "Cranial cavity"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd59e"
+            }
+        },
+        {
+            "title_name": "Synovial fluid contains ....",
+            "options": {
+                "A": "Heparin",
+                "B": "Hyaluronic acid",
+                "C": "Chondroitin sulphate",
+                "D": "Keratin sulphate"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd59f"
+            }
+        },
+        {
+            "title_name": "The most important blood buffer is ....",
+            "options": {
+                "A": "Bicarbonate buffer",
+                "B": "Plasma proteins",
+                "C": "Hemoglobin",
+                "D": "Ammonium"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5a0"
+            }
+        },
+        {
+            "title_name": "Which of the following is a vestigial organ?",
+            "options": {
+                "A": "Salivary glands",
+                "B": "Appendix",
+                "C": "Liver",
+                "D": "Pancreas"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5a1"
+            }
+        },
+        {
+            "title_name": "Which is the hardest tissue in the human body?",
+            "options": {
+                "A": "Bone",
+                "B": "Enamel of teeth",
+                "C": "Dentine of teeth",
+                "D": "Cartilage"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5a2"
+            }
+        },
+        {
+            "title_name": "Which is not an accessory organ of the digestive system?",
+            "options": {
+                "A": "Salivary gland",
+                "B": "Pancreas",
+                "C": "Liver",
+                "D": "Spleen"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5a3"
+            }
+        },
+        {
+            "title_name": "The section cutting machine is known as ....",
+            "options": {
+                "A": "Microtome",
+                "B": "Histosmate",
+                "C": "Histocut",
+                "D": "Histoform"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5a4"
+            }
+        },
+        {
+            "title_name": "Full form of FNAC is ....",
+            "options": {
+                "A": "Fine needle aspiration cytometry",
+                "B": "Fine needle aspiration cytology",
+                "C": "Fine needle aspiration cytoscopy",
+                "D": "Fine needle ascitic cytoscopy"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5a5"
+            }
+        },
+        {
+            "title_name": "Cyto-centrifuge is used for ....",
+            "options": {
+                "A": "Sputum",
+                "B": "Urine",
+                "C": "CSF",
+                "D": "Both b and c"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5a6"
+            }
+        },
+        {
+            "title_name": "Which of the following ripening agents is used in preparation of Harris Hematoxylin?",
+            "options": {
+                "A": "Mercuric oxide",
+                "B": "Sodium iodate",
+                "C": "Potassium iodate",
+                "D": "Naturally ripened"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5a7"
+            }
+        },
+        {
+            "title_name": "The full form of FAR is ....",
+            "options": {
+                "A": "Fixed Assets Register",
+                "B": "Fixed Assets Reacquisition",
+                "C": "Fixed Assets Remarks",
+                "D": "None of the above"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5a8"
+            }
+        },
+        {
+            "title_name": "Normal range for APTT test is ....",
+            "options": {
+                "A": "12 - 16 seconds",
+                "B": "30 - 40 seconds",
+                "C": "3 - 6 minutes",
+                "D": "6 - 11 minutes"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5a9"
+            }
+        },
+        {
+            "title_name": "Leishmania donovani, causative agent of kala-azar, is transmitted by ....",
+            "options": {
+                "A": "Culex mosquito",
+                "B": "Anopheles mosquito",
+                "C": "Aedes mosquito",
+                "D": "Sandfly"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5aa"
+            }
+        },
+        {
+            "title_name": "CPDA, commonly used anticoagulant in blood bags, can prolong red blood storage life up to ....",
+            "options": {
+                "A": "21 days",
+                "B": "28 days",
+                "C": "35 days",
+                "D": "42 days"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5ab"
+            }
+        },
+        {
+            "title_name": "Which one of the following is a supravital stain and is used for reticulocyte count?",
+            "options": {
+                "A": "Wright stain",
+                "B": "Brilliant cresyl blue stain",
+                "C": "Giemsa stain",
+                "D": "Jenner's stain"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5ac"
+            }
+        },
+        {
+            "title_name": "FFP can be preserved unutilized till ....",
+            "options": {
+                "A": "35 days",
+                "B": "6 hours",
+                "C": "12 hours",
+                "D": "1 year"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5ad"
+            }
+        },
+        {
+            "title_name": "Leukopenia means ....",
+            "options": {
+                "A": "Low RBC count",
+                "B": "Low monocyte count",
+                "C": "Low lymphocyte count",
+                "D": "Low total WBC count"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5ae"
+            }
+        },
+        {
+            "title_name": "In the blood bank section, whole blood containing packet is stored at ....",
+            "options": {
+                "A": "(2-8)°C",
+                "B": "(0-1)°C",
+                "C": "(5-10)°C",
+                "D": "None of the above"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5af"
+            }
+        },
+        {
+            "title_name": "A woman with blood group O married a man with blood group O, their child's genotype is ....",
+            "options": {
+                "A": "AO",
+                "B": "AB",
+                "C": "OO",
+                "D": "BO"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5b0"
+            }
+        },
+        {
+            "title_name": "Blood transfusion may transmit all of these diseases, except ....",
+            "options": {
+                "A": "Hepatitis B",
+                "B": "AIDS",
+                "C": "Syphilis",
+                "D": "Tuberculosis"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5b1"
+            }
+        },
+        {
+            "title_name": "Increased homocysteine level will affect ....",
+            "options": {
+                "A": "Niacin",
+                "B": "Vit B12",
+                "C": "Vit C",
+                "D": "Vit E"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5b2"
+            }
+        },
+        {
+            "title_name": "What is the specific gravity of red blood cells?",
+            "options": {
+                "A": "1.030",
+                "B": "1.039",
+                "C": "1.093",
+                "D": "1.003"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5b3"
+            }
+        },
+        {
+            "title_name": "Serum containing broth is sterilized by ....",
+            "options": {
+                "A": "Filtration",
+                "B": "Autoclave",
+                "C": "Hot air oven",
+                "D": "None of the above"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5b4"
+            }
+        },
+        {
+            "title_name": "For urethral sample collection from a gonorrhea patient, the preferred swab is ....",
+            "options": {
+                "A": "Cotton swab",
+                "B": "Alginate swab",
+                "C": "Dacron or rayon swab",
+                "D": "Sterile syringe"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683fe470eaab9344226cd5b5"
+            }
+        },
+        {
+            "title_name": "Hemoglobin electrophoresis is done for the diagnosis of which of the following disease?",
+            "options": {
+                "A": "Iron deficiency anemia",
+                "B": "Thalassemia",
+                "C": "Megaloblastic anemia",
+                "D": "G6PD deficiency anemia"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683ff1c68a90c9e735ed4395"
+            }
+        },
+        {
+            "title_name": "Which of the following defect occurs in iron deficiency anemia?",
+            "options": {
+                "A": "Production defect",
+                "B": "Maturation defect",
+                "C": "Defect in hemoglobin synthesis",
+                "D": "Genetic defect in hemoglobin"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683ff1c68a90c9e735ed4396"
+            }
+        },
+        {
+            "title_name": "Sideroblastic anemia is commonly ....",
+            "options": {
+                "A": "Macrocytic",
+                "B": "Microcytic",
+                "C": "Normocytic",
+                "D": "Spherocytic"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683ff1c68a90c9e735ed4397"
+            }
+        },
+        {
+            "title_name": "Which one of the following reagents is used to count platelets?",
+            "options": {
+                "A": "Turk's fluid",
+                "B": "Physiological saline",
+                "C": "Ammonium oxalate",
+                "D": "0.05% glacial acetic acid"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683ff1c68a90c9e735ed4398"
+            }
+        },
+        {
+            "title_name": "Which one of the following is a screening test used to evaluate the function of small blood vessels and platelets?",
+            "options": {
+                "A": "PT",
+                "B": "BT",
+                "C": "CT",
+                "D": "APTT"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683ff1c68a90c9e735ed4399"
+            }
+        },
+        {
+            "title_name": "Disinfectants reduce the microbial burden of an article ....",
+            "options": {
+                "A": "To zero in number",
+                "B": "To zero or to the extent that can't cause infection",
+                "C": "To zero number of vegetative form but not the spores",
+                "D": "All of the above"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683ff1c68a90c9e735ed439a"
+            }
+        },
+        {
+            "title_name": "Iodine in gram stain acts as ....",
+            "options": {
+                "A": "Chelator",
+                "B": "Mordant",
+                "C": "Catalyst",
+                "D": "Co-factor for crystal violet stain"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683ff1c68a90c9e735ed439b"
+            }
+        },
+        {
+            "title_name": "Agglutination test to detect the antigen in fluid samples using Cowan-I strain of Staphylococcus aureus is called ....",
+            "options": {
+                "A": "Direct agglutination",
+                "B": "Indirect agglutination",
+                "C": "Passive agglutination",
+                "D": "Co-agglutination"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683ff1c68a90c9e735ed439c"
+            }
+        },
+        {
+            "title_name": "Which one of the following is called amplified ELISA?",
+            "options": {
+                "A": "Sandwich ELISA",
+                "B": "Avidin-biotin ELISA",
+                "C": "Class-capture ELISA",
+                "D": "Competitive ELISA"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683ff1c68a90c9e735ed439d"
+            }
+        },
+        {
+            "title_name": "Terminal bacterial spore appearing as 'drum stick' is seen in ....",
+            "options": {
+                "A": "Clostridium perfringens",
+                "B": "Bacillus anthracis",
+                "C": "Bacillus subtilis",
+                "D": "Clostridium tetani"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683ff1c68a90c9e735ed439e"
+            }
+        },
+        {
+            "title_name": "Which one is the infective stage of malaria?",
+            "options": {
+                "A": "Sporozoite",
+                "B": "Merozoite",
+                "C": "Gametocyte",
+                "D": "Signet ring"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683ff1c68a90c9e735ed439f"
+            }
+        },
+        {
+            "title_name": "Germ tubes are formed mainly by ....",
+            "options": {
+                "A": "Candida tropicalis",
+                "B": "Candida pseudotropicalis",
+                "C": "Candida albicans",
+                "D": "Candida stellatoidea"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683ff1c68a90c9e735ed43a0"
+            }
+        },
+        {
+            "title_name": "Which one of the following is human immunodeficiency virus?",
+            "options": {
+                "A": "Retrovirus",
+                "B": "Paramyxovirus",
+                "C": "DNA virus",
+                "D": "Human papilloma virus"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683ff1c68a90c9e735ed43a1"
+            }
+        },
+        {
+            "title_name": "All of the following are vector-borne diseases, except ....",
+            "options": {
+                "A": "Malaria",
+                "B": "Filariasis",
+                "C": "Chagas disease",
+                "D": "Rubella"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683ff1c68a90c9e735ed43a2"
+            }
+        },
+        {
+            "title_name": "Acanthamoeba can infect ....",
+            "options": {
+                "A": "Bladder",
+                "B": "Liver",
+                "C": "Cornea and cause blindness",
+                "D": "Skin"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683ff1c68a90c9e735ed43a3"
+            }
+        },
+        {
+            "title_name": "Two hosts are required in ....",
+            "options": {
+                "A": "Taenia solium",
+                "B": "Entamoeba histolytica",
+                "C": "Trichuris trichiura",
+                "D": "Giardia"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683ff1d88a90c9e735ed4408"
+            }
+        },
+        {
+            "title_name": "Which immunoglobulin class is the most efficient to produce agglutination reaction?",
+            "options": {
+                "A": "IgG",
+                "B": "IgM",
+                "C": "IgA",
+                "D": "IgE"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683ff1d88a90c9e735ed4409"
+            }
+        },
+        {
+            "title_name": "Which of the following is a DNA virus?",
+            "options": {
+                "A": "Hepatitis A virus",
+                "B": "Hepatitis B virus",
+                "C": "Hepatitis C virus",
+                "D": "Hepatitis D virus"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683ff1d88a90c9e735ed440a"
+            }
+        },
+        {
+            "title_name": "All of the following statements concerning Trichomonas vaginalis are correct, except ....",
+            "options": {
+                "A": "It is transmitted sexually",
+                "B": "It can be diagnosed by visualizing trophozoite",
+                "C": "It can be treated with metronidazole",
+                "D": "It causes bloody diarrhoea"
+            },
+            "correctAnswer": "D",
+            "_id": {
+                "$oid": "683ff1d88a90c9e735ed440b"
+            }
+        },
+        {
+            "title_name": "Which one of the following is not a characteristic of histoplasmosis?",
+            "options": {
+                "A": "Person-to-person transmission",
+                "B": "Specific geographic distribution",
+                "C": "Yeasts in tissue",
+                "D": "Mycelial phase of the soil"
+            },
+            "correctAnswer": "A",
+            "_id": {
+                "$oid": "683ff1d88a90c9e735ed440c"
+            }
+        },
+        {
+            "title_name": "Medically important viruses range in size from ....",
+            "options": {
+                "A": "1-100 nm",
+                "B": "10-100 nm",
+                "C": "25-300 nm",
+                "D": "400-1000 nm"
+            },
+            "correctAnswer": "C",
+            "_id": {
+                "$oid": "683ff1d88a90c9e735ed440d"
+            }
+        },
+        {
+            "title_name": "Which of the following media components is used for the cultivation of anaerobic bacteria?",
+            "options": {
+                "A": "Sodium borohydride",
+                "B": "Sodium thioglycolate",
+                "C": "Phenol",
+                "D": "Methylene blue"
+            },
+            "correctAnswer": "B",
+            "_id": {
+                "$oid": "683ff1d88a90c9e735ed440e"
+            }
+        }
+    ],
+    "createdAt": {
+        "$date": {
+            "$numberLong": "1747553373391"
+        }
+    },
+    "updatedAt": {
+        "$date": {
+            "$numberLong": "1749021144555"
+        }
+    },
+    "__v": {
+        "$numberInt": "5"
+    }
+}
