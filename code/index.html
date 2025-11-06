@@ -34,7 +34,7 @@
             max-width: 850px;
             background: var(--card);
             border-radius: 12px;
-            padding: 22px;
+            padding: 20px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08)
         }
 
@@ -89,7 +89,7 @@
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
+            gap: 8px;
             margin-top: 16px;
         }
 
@@ -158,7 +158,6 @@
         <div class="row">
             <button id="fillBtn" class="btn-ghost">📋 Fill Example</button>
             <button id="parseBtn" class="btn-ghost">🔍 Parse Fields</button>
-            <button id="generateBtn" class="btn-primary">⚡ Generate Hash</button>
         </div>
 
         <div class="section">
@@ -185,6 +184,10 @@
                     <input id="phone" placeholder="phone_verification_id">
                 </div>
             </div>
+            <div style="text-align: right;">
+                <button id="generateBtn" class="btn-primary" style="margin-top: 10px;">⚡ Generate Hash</button>
+            </div>
+
         </div>
 
         <div class="section">
