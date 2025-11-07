@@ -143,12 +143,12 @@
 
 <body>
     <div class="card">
-        <h1>🔐 User Identity Hash Generator</h1>
+        <h1>🔐 Single User Identity</h1>
         <p style="color:#666;margin-bottom:10px;">Paste your JSON below or click <b>Fill Example</b>. You can also edit
             the extracted fields before generating the hash.</p>
 
         <textarea id="jsonInput" rows="8" placeholder='{
-  "applicant_id": 5256,
+  "applicant_id": 1111,
   "timeslot_id": "4c7d...",
   "email_verification_id": 9556,
   "phone_verification_id": 9556,
@@ -284,9 +284,8 @@
             fullJson.textContent = JSON.stringify(data, null, 2);
 
             debug.style.display = "block";
-            debug.textContent = "Full input string:\n" + JSON.stringify(fullInput) + "\n\nParts:\n" + JSON.stringify(parts, null, 2);
-        };
-
+            
+        }
         function copyText(id) {
             const text = document.getElementById(id).textContent;
             navigator.clipboard.writeText(text).then(() => alert("✅ Copied!"));

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Slot user_identity Generator</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f5f7fa;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+    .card {
+      width: 100%;
+      max-width: 900px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+    textarea, input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-copy { background: #00b86b; color: #fff; margin-top: 8px; }
+    .btn-copy:hover { background: #009657; }
+    .row { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+    .grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 10px; }
+    pre {
+      background: #f9fafb;
+      border: 1px solid #eee;
+      padding: 10px;
+      border-radius: 8px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    h1 { margin-top: 0; font-size: 22px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🔐 Bulk User Identity</h1>
+    <p style="color:#666">Paste your slot array JSON below ⬇️</p>
+    <textarea id="jsonInput" rows="10" placeholder='[ { "uid": "...", "timeslot_id": "..." }, ... ]'></textarea>
+
+    <div class="grid">
+      <div>
+        <label>Applicant ID</label>
+        <input id="applicant" placeholder="applicant_id">
+      </div>
+      <div>
+        <label>Detail Verification ID</label>
+        <input id="detail" placeholder="detail_verification_id">
+      </div>
+      <div>
+        <label>Email Verification ID</label>
+        <input id="email" placeholder="email_verification_id">
+      </div>
+      <div>
+        <label>Phone Verification ID</label>
+        <input id="phone" placeholder="phone_verification_id">
+      </div>
+    </div>
+
+    <div class="row">
+      <button id="generateBtn" class="btn-primary">Generate All user_identity</button>
+    </div>
+
+    <h3>Result:</h3>
+    <pre id="result">Waiting...</pre>
+    <button id="copyBtn" class="btn-copy">📋 Copy Full JSON</button>
+  </div>
+
+  <script>
+    const CVSQL = "df2fccb3ec825707b7da9aa0b8a474fcca279ff8";
+    const L3 = "KREMBNPL";
+
+    function norm(v) { return v === null || v === undefined ? '' : String(v).trim(); }
+
+    async function sha256Hex(str) {
+      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+    }
+
+    document.getElementById("generateBtn").onclick = async () => {
+      const input = document.getElementById("jsonInput").value;
+      const applicant = norm(document.getElementById("applicant").value);
+      const detail = norm(document.getElementById("detail").value);
+      const email = norm(document.getElementById("email").value);
+      const phone = norm(document.getElementById("phone").value);
+      const resultBox = document.getElementById("result");
+
+      if (!applicant || !detail || !email || !phone) {
+        alert("⚠️ Please fill all 4 IDs before generating!");
+        return;
+      }
+
+      try {
+        const arr = JSON.parse(input);
+        const out = [];
+
+        for (const s of arr) {
+          const timeslot_id = s.uid || s.timeslot_id || "";
+          const parts = [CVSQL, applicant, detail, email, phone, timeslot_id, L3];
+          const fullInput = parts.join("");
+          const hash = await sha256Hex(fullInput);
+
+          out.push({
+            applicant_id: applicant,
+            timeslot_id,
+            email_verification_id: email,
+            phone_verification_id: phone,
+            detail_verification_id: detail,
+            user_identity: hash
+          });
+        }
+
+        resultBox.textContent = JSON.stringify(out, null, 2);
+      } catch (e) {
+        resultBox.textContent = "❌ Invalid JSON: " + e.message;
+      }
+    };
+
+    document.getElementById("copyBtn").onclick = () => {
+      const txt = document.getElementById("result").textContent;
+      navigator.clipboard.writeText(txt).then(() => alert("✅ Copied!"));
+    };
+  </script>
+</body>
+</html>
