@@ -50,6 +50,18 @@
             outline: none;
             border-color: #007bff;
         }
+        input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
         .captcha-image {
             width: 100%;
             max-width: 400px;
@@ -70,6 +82,26 @@
             margin: 0 0 0.5rem;
             color: #333;
         }
+        .answer-section {
+            display: none;
+            margin: 1rem 0;
+        }
+        .response-container {
+            display: none;
+            margin: 1rem 0;
+            padding: 0.75rem;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            word-break: break-all;
+            text-align: left;
+        }
+        .response-container pre {
+            margin: 0.5rem 0 0;
+            background-color: #e9ecef;
+            padding: 0.75rem;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
         .error-message {
             display: none;
             color: red;
@@ -86,17 +118,23 @@
             border-radius: 5px;
             margin-bottom: 1rem;
         }
-        .copy-button {
-            background-color: #28a745;
+        .button {
+            background-color: #007bff;
             width: auto;
             padding: 0.5rem 1rem;
-            margin-top: 0.5rem;
+            margin: 0.5rem 0.25rem;
             color: white;
             border: none;
             border-radius: 5px;
             font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .copy-button {
+            background-color: #28a745;
         }
         .copy-button:hover {
             background-color: #218838;
@@ -106,21 +144,37 @@
 <body>
     <div class="container">
         <h2>CAPTCHA Display</h2>
-        <p>Paste the JSON response to display the CAPTCHA image and UUID.</p>
+        <p>Paste the JSON response or full HTTP response to display the CAPTCHA image and UUID.</p>
         <div id="error-message" class="error-message"></div>
         <div id="success-message" class="success-message"></div>
         <div class="form-group">
             <label for="json-input">JSON Input</label>
-            <textarea id="json-input" name="json-input" placeholder='Paste JSON here, e.g., {"className":"APIResponse","data":{"uuid":"...","image":"..."}}' required></textarea>
+            <textarea id="json-input" name="json-input" placeholder='Paste JSON or full HTTP response here' required></textarea>
         </div>
         <img id="captcha-image" class="captcha-image" alt="CAPTCHA Image">
         <div id="uuid-container" class="uuid-container">
             <p><strong>UUID:</strong> <span id="uuid-text"></span></p>
-            <button id="copy-uuid" class="copy-button">Copy UUID</button>
+            <button id="copy-uuid" class="copy-button button">Copy UUID</button>
+        </div>
+        
+        <div id="answer-section" class="answer-section">
+            <div class="form-group">
+                <label for="answer-input">Enter Answer</label>
+                <input type="text" id="answer-input" name="answer-input" placeholder="Enter the CAPTCHA answer">
+            </div>
+            <button id="generate-response" class="button">Generate Full Response</button>
+        </div>
+
+        <div id="response-container" class="response-container">
+            <p><strong>Full Response:</strong></p>
+            <pre id="response-json"></pre>
+            <button id="copy-response" class="copy-button button">Copy Full Response</button>
         </div>
     </div>
 
     <script>
+        let currentUuid = '';
+
         function showError(message) {
             const errorDiv = document.getElementById('error-message');
             errorDiv.textContent = message;
@@ -138,6 +192,8 @@
         function clearDisplay() {
             document.getElementById('captcha-image').style.display = 'none';
             document.getElementById('uuid-container').style.display = 'none';
+            document.getElementById('answer-section').style.display = 'none';
+            document.getElementById('response-container').style.display = 'none';
             document.getElementById('error-message').style.display = 'none';
             document.getElementById('success-message').style.display = 'none';
         }
@@ -147,18 +203,33 @@
             if (!jsonInput.trim()) return;
 
             try {
-                const parsedJson = JSON.parse(jsonInput);
+                let input = jsonInput.trim();
+                
+                // Check if input contains HTTP headers
+                if (input.startsWith('HTTP/')) {
+                    // Extract JSON from HTTP response
+                    const jsonStart = input.indexOf('{');
+                    if (jsonStart === -1) {
+                        throw new Error('No JSON found in HTTP response');
+                    }
+                    input = input.substring(jsonStart);
+                }
+                
+                const parsedJson = JSON.parse(input);
                 if (!parsedJson.data || !parsedJson.data.uuid || !parsedJson.data.image) {
                     throw new Error('Invalid JSON structure. Expected "data" with "uuid" and "image" fields.');
                 }
 
                 const { uuid, image } = parsedJson.data;
+                currentUuid = uuid;
+                
                 const captchaImage = document.getElementById('captcha-image');
                 captchaImage.src = `data:image/gif;base64,${image}`;
                 captchaImage.style.display = 'block';
 
                 document.getElementById('uuid-text').textContent = uuid;
                 document.getElementById('uuid-container').style.display = 'block';
+                document.getElementById('answer-section').style.display = 'block';
 
                 showSuccess('CAPTCHA image and UUID loaded successfully!');
             } catch (error) {
@@ -176,6 +247,34 @@
                 showSuccess('UUID copied to clipboard!');
             }).catch(() => {
                 showError('Failed to copy UUID.');
+            });
+        });
+
+        document.getElementById('generate-response').addEventListener('click', () => {
+            const answer = document.getElementById('answer-input').value.trim();
+            
+            if (!answer) {
+                showError('Please enter an answer first.');
+                return;
+            }
+
+            const responseObj = {
+                uuid: currentUuid,
+                answer: answer
+            };
+
+            const responseJson = JSON.stringify(responseObj);
+            document.getElementById('response-json').textContent = responseJson;
+            document.getElementById('response-container').style.display = 'block';
+            showSuccess('Full response generated!');
+        });
+
+        document.getElementById('copy-response').addEventListener('click', () => {
+            const responseText = document.getElementById('response-json').textContent;
+            navigator.clipboard.writeText(responseText).then(() => {
+                showSuccess('Full response copied to clipboard!');
+            }).catch(() => {
+                showError('Failed to copy response.');
             });
         });
     </script>
