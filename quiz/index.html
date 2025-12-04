@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced JSON Quiz Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .panel {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            resize: vertical;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #757f9a 0%, #d7dde8 100%);
+            color: #333;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+            color: white;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert-error {
+            background: #fee;
+            color: #c33;
+            border-left: 4px solid #c33;
+        }
+
+        .alert-success {
+            background: #efe;
+            color: #3c3;
+            border-left: 4px solid #3c3;
+        }
+
+        .preview-area {
+            min-height: 400px;
+            max-height: 600px;
+            overflow-y: auto;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+
+        .quiz-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-header h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question h3 {
+            font-size: 1.3rem;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-color: #667eea;
+        }
+
+        .correct-answer {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(17, 153, 142, 0.1) 0%, rgba(56, 239, 125, 0.1) 100%);
+            border-left: 4px solid #11998e;
+            border-radius: 8px;
+            color: #11998e;
+            font-weight: bold;
+        }
+
+        .export-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border: 2px dashed #667eea;
+            display: none;
+        }
+
+        .export-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .export-section textarea {
+            height: 200px;
+            font-size: 12px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 30px;
+            color: white;
+        }
+
+        .instructions {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .instructions h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Advanced JSON Quiz Generator</h1>
+            <p class="subtitle">Transform your JSON quiz data into beautiful, interactive HTML pages</p>
+        </header>
+
+        <div class="instructions">
+            <h3>📋 How to Use:</h3>
+            <ul>
+                <li>Paste your JSON array containing quiz questions in the input area</li>
+                <li>Each question must have: <code>title_name</code>, <code>options</code> (object with A, B, C, D), and
+                    <code>correctAnswer</code></li>
+                <li>Customize quiz title, description, and meta information</li>
+                <li>Click "Generate Quiz" to preview</li>
+                <li>Export the complete HTML file ready for your blog or website</li>
+            </ul>
+        </div>
+
+        <div id="alert-error" class="alert alert-error"></div>
+        <div id="alert-success" class="alert alert-success"></div>
+
+        <div class="main-content">
+            <div class="panel">
+                <h2 class="section-title">⚙️ Configuration</h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="question-count">0</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="option-count">0</div>
+                        <div class="stat-label">Options</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="json-status">Waiting</div>
+                        <div class="stat-label">Status</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="quiz-title">📝 Quiz Title</label>
+                    <input type="text" id="quiz-title" value="Medical Knowledge Quiz" placeholder="Enter quiz title">
+                </div>
+
+                <div class="form-group">
+                    <label for="quiz-description">📄 Quiz Description</label>
+                    <textarea id="quiz-description" rows="3"
+                        placeholder="Enter quiz description">Test your medical knowledge with these multiple choice questions. Click on any option to see the correct answer.</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="question-limit">🔢 Number of Questions to Generate</label>
+                    <input type="number" id="question-limit" value="25" min="1" placeholder="Enter number of questions">
+                </div>
+
+                <div class="form-group">
+                    <label for="meta-keywords">🔑 Meta Keywords (SEO)</label>
+                    <input type="text" id="meta-keywords" placeholder="quiz, medical, exam, questions">
+                </div>
+
+                <div class="form-group">
+                    <label for="website-url">🌐 Website URL</label>
+                    <input type="text" id="website-url" placeholder="https://www.example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="json-input">📥 JSON Input</label>
+                    <textarea id="json-input" placeholder='Paste your JSON array here, e.g.:
+[
+  {
+    "title_name": "Question text?",
+    "options": {"A": "Option 1", "B": "Option 2", "C": "Option 3", "D": "Option 4"},
+    "correctAnswer": "A"
+  }
+]'></textarea>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-primary" id="generate-btn">🚀 Generate Quiz</button>
+                    <button class="btn btn-success" id="load-sample-btn">📋 Load Sample</button>
+                    <button class="btn btn-secondary" id="clear-btn">🗑️ Clear</button>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2 class="section-title">👁️ Preview</h2>
+                <div class="preview-area" id="preview-area">
+                    <p style="text-align: center; color: #999; padding: 40px;">
+                        Your quiz preview will appear here.<br>
+                        Paste JSON and click "Generate Quiz" to start.
+                    </p>
+                </div>
+
+                <div class="export-section" id="export-section">
+                    <h3>📦 Export HTML</h3>
+                    <p>Copy this complete HTML code and save it as an .html file or paste into your blog:</p>
+                    <textarea id="html-output" readonly></textarea>
+                    <div class="btn-group">
+                        <button class="btn btn-success" id="copy-btn">📋 Copy HTML</button>
+                        <button class="btn btn-primary" id="download-btn">💾 Download HTML</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 Advanced JSON Quiz Generator | Made with ❤️ for Educators</p>
+        </div>
+    </div>
+
+    <script>
+        const jsonInput = document.getElementById('json-input');
+        const generateBtn = document.getElementById('generate-btn');
+        const loadSampleBtn = document.getElementById('load-sample-btn');
+        const clearBtn = document.getElementById('clear-btn');
+        const previewArea = document.getElementById('preview-area');
+        const htmlOutput = document.getElementById('html-output');
+        const copyBtn = document.getElementById('copy-btn');
+        const downloadBtn = document.getElementById('download-btn');
+        const quizTitleInput = document.getElementById('quiz-title');
+        const quizDescriptionInput = document.getElementById('quiz-description');
+        const questionLimitInput = document.getElementById('question-limit');
+        const metaKeywordsInput = document.getElementById('meta-keywords');
+        const websiteUrlInput = document.getElementById('website-url');
+        const exportSection = document.getElementById('export-section');
+        const questionCount = document.getElementById('question-count');
+        const optionCount = document.getElementById('option-count');
+        const jsonStatus = document.getElementById('json-status');
+        const alertError = document.getElementById('alert-error');
+        const alertSuccess = document.getElementById('alert-success');
+
+        const sampleJSON = [
+            {
+                "title_name": "Which one of the following drug is relatively safer in pregnancy?",
+                "options": { "A": "Metformin", "B": "Ranitidine", "C": "Acyclovir", "D": "Glibenclamide" },
+                "correctAnswer": "C"
+            },
+            {
+                "title_name": "If the Hepatic metabolism is not changed and volume of distribution is increased the .....",
+                "options": { "A": "Dosing interval should be increased", "B": "Dosing interval should be decreased", "C": "Dose should be increased", "D": "Dose should be decreased" },
+                "correctAnswer": "C"
+            }
+        ];
+
+        function showError(message) {
+            alertError.textContent = message;
+            alertError.style.display = 'block';
+            alertSuccess.style.display = 'none';
+            setTimeout(() => alertError.style.display = 'none', 5000);
+        }
+
+        function showSuccess(message) {
+            alertSuccess.textContent = message;
+            alertSuccess.style.display = 'block';
+            alertError.style.display = 'none';
+            setTimeout(() => alertSuccess.style.display = 'none', 5000);
+        }
+
+        function updateJsonStats() {
+            try {
+                const jsonText = jsonInput.value.trim();
+                if (!jsonText) {
+                    questionCount.textContent = '0';
+                    optionCount.textContent = '0';
+                    jsonStatus.textContent = 'Waiting';
+                    return;
+                }
+
+                const json = JSON.parse(jsonText);
+                if (Array.isArray(json) && json.length > 0) {
+                    questionCount.textContent = json.length;
+                    const options = Object.keys(json[0].options || {});
+                    optionCount.textContent = options.length;
+                    jsonStatus.textContent = 'Valid ✓';
+                }
+            } catch (e) {
+                questionCount.textContent = '0';
+                optionCount.textContent = '0';
+                jsonStatus.textContent = 'Invalid ✗';
+            }
+        }
+
+        jsonInput.addEventListener('input', updateJsonStats);
+        questionLimitInput.addEventListener('input', updateJsonStats);
+
+        loadSampleBtn.addEventListener('click', () => {
+            jsonInput.value = JSON.stringify(sampleJSON, null, 2);
+            updateJsonStats();
+            showSuccess('Sample JSON loaded successfully!');
+        });
+
+        clearBtn.addEventListener('click', () => {
+            jsonInput.value = '';
+            updateJsonStats();
+            previewArea.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">Your quiz preview will appear here.<br>Paste JSON and click "Generate Quiz" to start.</p>';
+            exportSection.style.display = 'none';
+        });
+
+        generateBtn.addEventListener('click', () => {
+            try {
+                const jsonText = jsonInput.value.trim();
+                if (!jsonText) {
+                    showError('Please enter JSON data.');
+                    return;
+                }
+
+                const jsonData = JSON.parse(jsonText);
+                if (!Array.isArray(jsonData) || jsonData.length === 0) {
+                    showError('JSON must be a non-empty array of questions.');
+                    return;
+                }
+
+                for (let i = 0; i < jsonData.length; i++) {
+                    const q = jsonData[i];
+                    if (!q.title_name || !q.options || !q.correctAnswer) {
+                        showError(`Question ${i + 1} is missing required fields.`);
+                        return;
+                    }
+                }
+
+                // Random selection of questions
+                const questionLimit = parseInt(questionLimitInput.value) || 25;
+                let selectedQuestions = jsonData;
+
+                if (jsonData.length > questionLimit) {
+                    // Shuffle array and take first N questions
+                    selectedQuestions = [...jsonData].sort(() => Math.random() - 0.5).slice(0, questionLimit);
+                }
+
+                const quizTitle = quizTitleInput.value || 'Quiz';
+                const quizDescription = quizDescriptionInput.value || 'Test your knowledge.';
+
+                const quizHtml = generateQuizHtml(selectedQuestions, quizTitle, quizDescription);
+                previewArea.innerHTML = quizHtml;
+
+                const fullHtml = generateFullHtml(selectedQuestions, quizTitle, quizDescription);
+                htmlOutput.value = fullHtml;
+
+                exportSection.style.display = 'block';
+                addOptionEventListeners();
+                showSuccess(`Quiz generated successfully with ${selectedQuestions.length} random questions!`);
+
+            } catch (error) {
+                showError('Error: ' + error.message);
+            }
+        });
+
+        function generateQuizHtml(questions, title, description) {
+            let html = `
+                <div class="quiz-header">
+                    <h2>${title}</h2>
+                    <p>${description}</p>
+                </div>
+            `;
+
+            questions.forEach((q, index) => {
+                const options = q.options;
+                const optionLetters = Object.keys(options);
+
+                html += `
+                    <div class="question">
+                        <h3>${index + 1}. ${q.title_name}</h3>
+                        <div class="options">
+                `;
+
+                optionLetters.forEach(letter => {
+                    html += `
+                        <div class="option" data-question="${index}">
+                            ${letter}. ${options[letter]}
+                        </div>
+                    `;
+                });
+
+                html += `
+                        </div>
+                        <div class="correct-answer" id="answer-${index}">
+                            ✓ Correct Answer: ${q.correctAnswer}. ${options[q.correctAnswer]}
+                        </div>
+                    </div>
+                `;
+            });
+
+            return html;
+        }
+
+        function generateFullHtml(questions, title, description) {
+            const metaKeywords = metaKeywordsInput.value || 'quiz, questions, exam';
+            const websiteUrl = websiteUrlInput.value || 'https://www.example.com';
+
+            let questionsHtml = '';
+            questions.forEach((q, index) => {
+                const options = q.options;
+                const optionLetters = Object.keys(options);
+
+                questionsHtml += `
+            <div class="question">
+                <h3>${index + 1}. ${q.title_name}</h3>
+                <div class="options">
+                `;
+
+                optionLetters.forEach(letter => {
+                    questionsHtml += `
+                    <div class="option">
+                        ${letter}. ${options[letter]}
+                    </div>
+                    `;
+                });
+
+                questionsHtml += `
+                </div>
+                <div class="correct-answer">
+                    Correct Answer: ${q.correctAnswer}. ${options[q.correctAnswer]}
+                </div>
+            </div>
+                `;
+            });
+
+            return `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="${description}">
+    <meta name="keywords" content="${metaKeywords}">
+    <meta name="author" content="Quiz Generator">
+    <meta property="og:title" content="${title}">
+    <meta property="og:description" content="${description}">
+    <meta property="og:url" content="${websiteUrl}">
+    <title>${title}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .quiz-header {
+            background: white;
+            color: #333;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .quiz-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .quiz-header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .quiz-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .question {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .question h3 {
+            font-size: 1.3rem;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .options {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .option {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .option:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+        
+        .correct-answer {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(17, 153, 142, 0.1) 0%, rgba(56, 239, 125, 0.1) 100%);
+            border-left: 4px solid #11998e;
+            border-radius: 8px;
+            color: #11998e;
+            font-weight: bold;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 30px;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .quiz-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .question h3 {
+                font-size: 1.1rem;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+    <div class="container">
+        <div class="quiz-header">
+            <h1>${title}</h1>
+            <p>${description}</p>
+        </div>
+        
+        <div class="quiz-container">
+            ${questionsHtml}
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 ${title} | All rights reserved</p>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', () => {
+                const correctAnswer = option.parentElement.nextElementSibling;
+                correctAnswer.style.display = 'block';
+            });
+        });
+        
+        document.addEventListener('copy', (e) => {
+            e.preventDefault();
+        });
+        
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+    <\/script>
+</body>
+</html>`;
+        }
+
+        function addOptionEventListeners() {
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function () {
+                    const questionIndex = this.getAttribute('data-question');
+                    const answerDiv = document.getElementById(`answer-${questionIndex}`);
+                    answerDiv.style.display = 'block';
+                });
+            });
+        }
+
+        copyBtn.addEventListener('click', () => {
+            htmlOutput.select();
+            htmlOutput.setSelectionRange(0, 99999);
+
+            try {
+                document.execCommand('copy');
+                showSuccess('HTML copied to clipboard!');
+            } catch (err) {
+                showError('Failed to copy. Please copy manually.');
+            }
+        });
+
+        downloadBtn.addEventListener('click', () => {
+            const blob = new Blob([htmlOutput.value], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'quiz.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showSuccess('HTML file downloaded!');
+        });
+
+        updateJsonStats();
+    </script>
+</body>
+
+</html>
